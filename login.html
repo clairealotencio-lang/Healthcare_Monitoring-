@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – Mamatid Health Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Background orbs -->
+<div class="bg-orb" style="width:420px;height:420px;background:rgba(44,77,232,0.25);top:-100px;left:-120px;animation-duration:18s;"></div>
+<div class="bg-orb" style="width:300px;height:300px;background:rgba(240,127,114,0.2);top:60%;right:-80px;animation-duration:14s;animation-delay:-6s;"></div>
+<div class="bg-orb" style="width:260px;height:260px;background:rgba(255,255,255,0.06);bottom:-60px;left:30%;animation-duration:20s;animation-delay:-10s;"></div>
+<div class="bg-orb" style="width:180px;height:180px;background:rgba(44,77,232,0.18);top:40%;left:20%;animation-duration:16s;animation-delay:-3s;"></div>
+
+<div class="card">
+
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <div class="seal-ring">
+      <!-- Replace with actual seal: <img src="seal.png" alt="Barangay Mamatid Seal" /> -->
+      <div class="seal-placeholder">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>BRGY. MAMATID<br>CITY OF CABUYAO</span>
+      </div>
+    </div>
+
+    <div class="badge">
+      <span>✦</span> SERBISYONG WOW! MAMATID <span>✦</span>
+    </div>
+
+    <div class="left-title">Mamatid Health<br>Center</div>
+
+    <div class="left-sub">
+      Serbisyong WOW! para sa mamamayan,<br>
+      your community health partner.
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right">
+    <div class="right-title">Patient Login</div>
+
+    <div class="field">
+      <div class="input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <polyline points="3,5 12,13 21,5"/>
+        </svg>
+        <input type="email" placeholder="Enter Your Email" autocomplete="email" />
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <rect x="5" y="11" width="14" height="10" rx="2"/>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+        </svg>
+        <input type="password" placeholder="Enter Your Password" autocomplete="current-password" />
+      </div>
+    </div>
+
+    <div class="row-meta">
+      <label class="remember">
+        <input type="checkbox" /> Remember Me
+      </label>
+      <a href="#" class="forgot">Forgot Password?</a>
+    </div>
+
+    <button class="btn-login" onclick="handleLogin()">LOGIN</button>
+
+    <div class="register-row">
+      Don't have an account? <a href="register.html">Register an Account</a>
+    </div>
+
+    <div class="terms-row">
+      By clicking login, you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
