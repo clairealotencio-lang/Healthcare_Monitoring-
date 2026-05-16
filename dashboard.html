@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – Mamatid Health Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="viewport-fullscreen-layout">
+
+<div class="bg-orb" style="width:420px;height:420px;background:rgba(44,77,232,0.25);top:-100px;left:-120px;animation-duration:18s;"></div>
+<div class="bg-orb" style="width:300px;height:300px;background:rgba(240,127,114,0.2);top:60%;right:-80px;animation-duration:14s;animation-delay:-6s;"></div>
+<div class="bg-orb" style="width:260px;height:260px;background:rgba(255,255,255,0.06);bottom:-60px;left:30%;animation-duration:20s;animation-delay:-10s;"></div>
+
+<div class="fullscreen-workspace-grid">
+
+  <aside class="left brand-column-view">
+    <div class="seal-ring">
+      <div class="seal-placeholder">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>BRGY. MAMATID<br>CITY OF CABUYAO</span>
+      </div>
+    </div>
+
+    <div class="badge">
+      <span>✦</span> SERBISYONG WOW! MAMATID <span>✦</span>
+    </div>
+
+    <div class="left-title">Patient Portal<br>Dashboard</div>
+
+    <div class="left-sub">
+      Serbisyong WOW! para sa mamamayan,<br>
+      your community health partner.
+    </div>
+  </aside>
+
+  <main class="content-workspace-stage">
+    
+    <header class="workspace-top-control-bar">
+      <div class="welcome-meta-block">
+        <h1>Welcome Back, Patient!</h1>
+        <p>Real-time health center profile status monitoring dashboard.</p>
+      </div>
+
+      <nav class="integrated-navigation-menu">
+        <a href="#" class="nav-menu-link active">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          Overview
+        </a>
+        <a href="#" class="nav-menu-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line></svg>
+          My Records
+        </a>
+        <a href="login.html" class="nav-menu-link signout-accent">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+      </nav>
+    </header>
+
+    <section class="workspace-announcement-panel">
+      <div class="announcement-panel-header">
+        <div class="pulse-indicator-row">
+          <span class="pulse-live-beacon"></span>
+          <h3>Center Bulletins & Announcements</h3>
+        </div>
+      </div>
+      <div id="dynamicAnnouncementsContainer" class="bulletins-scrolling-view"></div>
+    </section>
+
+    <section class="workspace-metrics-row">
+      <div class="stat-card variant-salmon-gradient">
+        <div class="stat-card-meta">
+          <h3>Upcoming Appointments</h3>
+          <span class="stat-card-digit">01</span>
+        </div>
+        <div class="stat-card-vector">➔</div>
+      </div>
+
+      <div class="stat-card variant-blue-gradient">
+        <div class="stat-card-meta">
+          <h3>Prescriptions Logged</h3>
+          <span class="stat-card-digit">04</span>
+        </div>
+        <div class="stat-card-vector">✦</div>
+      </div>
+    </section>
+
+    <section class="workspace-table-panel">
+      <div class="table-panel-header">
+        <h2>Recent Activity History</h2>
+        <button class="btn-login embedded-action-btn">Book New Appointment</button>
+      </div>
+      <div class="table-scroll-viewport">
+        <table class="workspace-data-table-tag">
+          <thead>
+            <tr>
+              <th>Reference ID</th>
+              <th>Service Type</th>
+              <th>Date / Time Scheduled</th>
+              <th>Assigned Personnel</th>
+              <th>Status Badge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>#MHC-9482</strong></td>
+              <td>General Medical Checkup</td>
+              <td>May 18, 2026 — 09:00 AM</td>
+              <td>Dr. A. Alotencio</td>
+              <td><span class="status-token status-blue">Confirmed</span></td>
+            </tr>
+            <tr>
+              <td><strong>#MHC-8371</strong></td>
+              <td>Routine Immunization</td>
+              <td>April 12, 2026 — 02:30 PM</td>
+              <td>Nurse Staff Clara</td>
+              <td><span class="status-token status-green">Completed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", renderAnnouncements);
+</script>
+</body>
+</html>
