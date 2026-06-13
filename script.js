@@ -1,148 +1,245 @@
-function selectRole(role){
-    const title = document.getElementById('loginTitle');
-    const hiddenField = document.getElementById('selectedRole');
-    const buttons = document.querySelectorAll('.role-btn');
-    const roleNote = document.getElementById('loginRoleNote');
+// GLOBAL VARIABLE PARA SA AKTIBONG ROLE
+let selectedRole = 'patient';
 
+// 1. ROLE SWITCHING FUNCTION (Pinagsamang Luma at Bago)
+function selectRole(role) {
+    selectedRole = role;
+    
+    // Suporta para sa bago (.role-switch button) at lumang selector (.role-btn)
+    const buttons = document.querySelectorAll('.role-switch button, .role-btn');
     buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-role') === role);
+        const dataRole = btn.getAttribute('data-role');
+        if (dataRole) {
+            btn.classList.toggle('active', dataRole === role);
+        } else {
+            // Kung walang data-role attribute, i-fallback sa text content matching
+            if (btn.textContent.trim().toLowerCase() === role.toLowerCase()) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        }
     });
 
-    if(title){
+    // Paghahanap sa mga ID/Classes ng DOM Elements mula sa luma at bagong HTML
+    const title = document.getElementById('loginTitle') || document.querySelector('.login-form-card h2');
+    const loginSubtitle = document.querySelector('.subtitle');
+    const roleNote = document.getElementById('loginRoleNote');
+    const hiddenField = document.getElementById('selectedRole');
+
+    // Update sa mga Titulo at Subtitle
+    if (title) {
         title.textContent = role === 'staff' ? 'Staff Login' : 'Patient Login';
     }
 
-    if(hiddenField){
-        hiddenField.value = role;
+    if (loginSubtitle) {
+        loginSubtitle.textContent = role === 'staff' 
+            ? 'Sign in to the staff management portal' 
+            : 'Sign in to your health portal';
     }
 
-    if(roleNote){
+    if (roleNote) {
         roleNote.textContent = role === 'staff'
             ? 'Use your staff credentials to access the staff dashboard.'
             : 'Access your patient account and manage appointments securely.';
     }
+
+    if (hiddenField) {
+        hiddenField.value = role;
+    }
 }
 
-function login(){
-    const emailInput = document.getElementById('loginEmail');
-    const passwordInput = document.getElementById('loginPassword');
+// 2. LOGIN VALIDATION AT ROUTING (Pinagsamang Form Submission at ID Checks)
+function handleLogin(event) {
+    // Pigilan ang default form submit reload kung galing sa standard event listener
+    if (event) event.preventDefault();
+
+    // Sumusuporta sa parehong 'loginEmail' (luma) o 'email' (bago) depende sa HTML input IDs mo
+    const emailInput = document.getElementById('loginEmail') || document.getElementById('email');
+    const passwordInput = document.getElementById('loginPassword') || document.getElementById('password');
+    
     const emailMessage = document.getElementById('emailMessage');
     const passwordMessage = document.getElementById('passwordMessage');
     const emailField = emailInput?.closest('.login-field');
     const passwordField = passwordInput?.closest('.login-field');
 
     let valid = true;
+    const emailValue = emailInput ? emailInput.value.trim() : '';
+    const passwordValue = passwordInput ? passwordInput.value.trim() : '';
 
-    if (!emailInput || !emailInput.value.trim()) {
-        emailMessage.textContent = 'Email is required.';
+    // Email Validation Check
+    if (!emailValue) {
+        if (emailMessage) emailMessage.textContent = 'Email is required.';
+        else alert('Email Address is required.');
         emailField?.classList.add('error');
         valid = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-        emailMessage.textContent = 'Invalid email.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+        if (emailMessage) emailMessage.textContent = 'Invalid email.';
+        else alert('Please enter a valid email address.');
         emailField?.classList.add('error');
         valid = false;
     } else {
-        emailMessage.textContent = '';
+        if (emailMessage) emailMessage.textContent = '';
         emailField?.classList.remove('error');
     }
 
-    if (!passwordInput || !passwordInput.value.trim()) {
-        passwordMessage.textContent = 'Password is required.';
+    // Password Validation Check
+    if (!passwordValue) {
+        if (passwordMessage) passwordMessage.textContent = 'Password is required.';
+        else alert('Password is required.');
         passwordField?.classList.add('error');
         valid = false;
     } else {
-        passwordMessage.textContent = '';
+        if (passwordMessage) passwordMessage.textContent = '';
         passwordField?.classList.remove('error');
     }
 
-    if (!valid) return;
+    if (!valid) return false;
 
-    const selectedRole = document.getElementById('selectedRole')?.value || 'patient';
-    window.location.href = selectedRole === 'staff' ? 'staff-dashboard.html' : 'dashboard.html';
+    // Kunin ang active role mula sa global state o kaya sa fallback element
+    const currentRole = selectedRole || document.getElementById('selectedRole')?.value || 'patient';
+    
+    // Dynamic Redirect
+    window.location.href = currentRole === 'staff' ? 'staff-dashboard.html' : 'dashboard.html';
+    return false;
 }
 
-function togglePassword(){
-    const passwordInput = document.getElementById('loginPassword');
+// Tugma para sa lumang function call name kung may inline onclick="login()" pa ang code mo
+function login() {
+    return handleLogin();
+}
+
+// 3. SHOW / HIDE PASSWORD FUNCTION
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('loginPassword') || document.getElementById('password');
     const toggleIcon = document.getElementById('passwordToggleIcon');
     const toggleButton = document.querySelector('.password-toggle');
+    const inlineSpan = document.querySelector('.password-box span');
 
-    if (!passwordInput || !toggleIcon || !toggleButton) return;
+    if (!passwordInput) return;
 
     const isPassword = passwordInput.type === 'password';
     passwordInput.type = isPassword ? 'text' : 'password';
-    toggleIcon.textContent = isPassword ? '🙈' : '👁';
-    toggleButton.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+
+    // Suporta para sa lumang UI Icons (🙈 / 👁)
+    if (toggleIcon) {
+        toggleIcon.textContent = isPassword ? '🙈' : '👁';
+    }
+    if (toggleButton) {
+        toggleButton.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+    }
+    
+    // Suporta naman para sa bagong text-based setup (Show / Hide text toggle)
+    if (inlineSpan) {
+        inlineSpan.textContent = isPassword ? 'Hide' : 'Show';
+    }
 }
 
-function nextStep(step){
-    document.querySelectorAll('.form-step')
-    .forEach(el=>el.classList.remove('active'));
-
-    document.getElementById(`step-${step}`)
-    .classList.add('active');
+// Fallback link para sa lumang togglePassword() naming format
+function togglePassword() {
+    togglePasswordVisibility();
 }
 
-function prevStep(step){
-    document.querySelectorAll('.form-step')
-    .forEach(el=>el.classList.remove('active'));
+// 4. REGISTRATION STEP NAVIGATION (May kasamang Step Tracker Update para sa register.html)
+function nextStep(step) {
+    document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+    
+    const targetStep = document.getElementById(`step-${step}`);
+    if (targetStep) targetStep.classList.add('active');
 
-    document.getElementById(`step-${step}`)
-    .classList.add('active');
+    // I-update ang Step Tracker Nodes visual indicators kung mayroon man sa page
+    document.querySelectorAll('.step-node').forEach((node, index) => {
+        if (index + 1 <= step) {
+            node.classList.add('active');
+        } else {
+            node.classList.remove('active');
+        }
+    });
 }
 
-function handleRegistration(){
+function prevStep(step) {
+    document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
+    
+    const targetStep = document.getElementById(`step-${step}`);
+    if (targetStep) targetStep.classList.add('active');
 
-    const pass =
-    document.getElementById('regPassword').value;
+    document.querySelectorAll('.step-node').forEach((node, index) => {
+        if (index + 1 > step) {
+            node.classList.remove('active');
+        }
+    });
+}
 
-    const confirm =
-    document.getElementById('confirmPassword').value;
+// 5. REGISTRATION SUBMIT
+function handleRegistration() {
+    const passInput = document.getElementById('regPassword');
+    const confirmInput = document.getElementById('confirmPassword');
+    const agreeTerms = document.getElementById('agreeTerms');
 
-    if(pass !== confirm){
+    if (!passInput || !confirmInput) return;
+
+    const pass = passInput.value;
+    const confirm = confirmInput.value;
+
+    if (!pass || !confirm) {
+        alert("Please fill up the password fields.");
+        return;
+    }
+
+    if (pass !== confirm) {
         alert("Passwords do not match");
         return;
     }
 
+    // Kung may terms check checkbox sa html, kailangan itong i-check muna
+    if (agreeTerms && !agreeTerms.checked) {
+        alert("You must agree to the Terms of Service and Privacy Policy.");
+        return;
+    }
+
     alert("Account Created Successfully");
-
-    window.location.href="login.html";
+    window.location.href = "login.html";
 }
 
+// 6. ANNOUNCEMENT DATA & DYNAMIC RENDER
 const announcementsData = [
-{
-title:"Seasonal Flu Shots",
-content:"Free Flu vaccinations available.",
-date:"June 9, 2026"
-},
-{
-title:"Free Blood Pressure Screening",
-content:"Saturday screening program.",
-date:"June 6, 2026"
-}
+    {
+        title: "Seasonal Flu Shots",
+        content: "Free Flu vaccinations available.",
+        date: "June 9, 2026"
+    },
+    {
+        title: "Free Blood Pressure Screening",
+        content: "Saturday screening program.",
+        date: "June 6, 2026"
+    }
 ];
 
-function renderAnnouncements(){
+function renderAnnouncements() {
+    const container = document.getElementById("bulletinsContainer");
+    if (!container) return;
 
-const container =
-document.getElementById("bulletinsContainer");
+    container.innerHTML = '';
 
-if(!container) return;
-
-container.innerHTML='';
-
-announcementsData.forEach(item=>{
-
-container.innerHTML += `
-<div class="bulletin-item">
-<h4>${item.title}</h4>
-<p>${item.content}</p>
-<span class="bulletin-date">${item.date}</span>
-</div>
-`;
-
-});
+    announcementsData.forEach(item => {
+        // Ginamit ang bagong modern flat-card inline layout para malinis tingnan ang integration
+        container.innerHTML += `
+            <div class="bulletin-item" style="background: #112229; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid #0f766e;">
+                <h4 style="color: #fff; margin-bottom: 5px;">${item.title}</h4>
+                <p style="color: #a0b2bc; font-size: 14px; margin-bottom: 5px;">${item.content}</p>
+                <span class="bulletin-date" style="color: #0f766e; font-size: 12px; font-weight: bold;">${item.date}</span>
+            </div>
+        `;
+    });
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
-renderAnnouncements();
+// INITIALIZATION KAPAG HANDA NA ANG DOM TREE
+document.addEventListener("DOMContentLoaded", () => {
+    renderAnnouncements();
+    
+    // Auto-attach event sa password trigger event click mechanics
+    const showHideBtn = document.querySelector('.password-box span') || document.querySelector('.password-toggle');
+    if (showHideBtn) {
+        showHideBtn.addEventListener('click', togglePasswordVisibility);
+    }
 });

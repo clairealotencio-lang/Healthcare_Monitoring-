@@ -37,29 +37,29 @@
                 <p class="subtitle">Sign in to your health portal</p>
                 
                 <div class="role-switch">
-                    <button class="active">Patient</button>
-                    <button>Staff</button>
+                    <button type="button" class="active" onclick="selectRole('patient')">Patient</button>
+                    <button type="button" onclick="selectRole('staff')">Staff</button>
                 </div>
 
-                <form>
+                <form onsubmit="return handleLogin(event)">
                     <label for="email">Email Address</label>
-                    <div style="position: relative;">
+                    <div style="position: relative; margin-bottom: 15px;">
                         <i class="fa-regular fa-envelope" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #64748b;"></i>
-                        <input type="email" id="email" placeholder="Enter your email" style="padding-left: 40px;">
+                        <input type="email" id="email" placeholder="Enter your email" style="padding-left: 40px; width: 100%; height: 45px; border-radius: 8px; border: 1px solid #243b46; background: #112229; color: white;">
                     </div>
 
                     <label for="password">Password</label>
-                    <div class="password-box">
+                    <div class="password-box" style="position: relative; margin-bottom: 15px;">
                         <i class="fa-solid fa-lock" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #64748b;"></i>
-                        <input type="password" id="password" placeholder="Enter your password" style="padding-left: 40px;">
-                        <span>Show</span>
+                        <input type="password" id="password" placeholder="Enter your password" style="padding-left: 40px; width: 100%; height: 45px; border-radius: 8px; border: 1px solid #243b46; background: #112229; color: white;">
+                        <span style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #0f766e; cursor: pointer; font-size: 14px; font-weight: bold;">Show</span>
                     </div>
 
-                    <div class="options">
-                        <label>
+                    <div class="options" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; color: #a0b2bc; font-size: 14px;">
+                        <label style="display: flex; align-items: center; gap: 5px;">
                             <input type="checkbox"> Remember Me
                         </label>
-                        <a href="#">Forgot Password?</a>
+                        <a href="#" style="color: #0f766e; text-decoration: none;">Forgot Password?</a>
                     </div>
 
                     <button type="submit" class="login-btn">LOGIN</button>
@@ -68,13 +68,18 @@
                 <div class="divider">Or continue with</div>
 
                 <div class="socials">
-                    <button><i class="fa-brands fa-google" style="color: #db4437; margin-right: 8px;"></i> Google</button>
-                    <button><i class="fa-brands fa-facebook" style="color: #1877f2; margin-right: 8px;"></i> Facebook</button>
+                    <button type="button"><i class="fa-brands fa-google" style="color: #db4437; margin-right: 8px;"></i> Google</button>
+                    <button type="button"><i class="fa-brands fa-facebook" style="color: #1877f2; margin-right: 8px;"></i> Facebook</button>
                 </div>
 
                 <div class="register">
-                    Don't have an account? <a href="#">Register an Account</a>
+                    Don't have an account? <a href="register.html">Register an Account</a>
                 </div>
                 
-            </div> </div> </div> </body>
+            </div> 
+        </div> 
+    </div> 
+
+    <script src="script.js"></script>
+</body>
 </html>
