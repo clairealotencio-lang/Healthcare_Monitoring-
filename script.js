@@ -1,151 +1,148 @@
-// ── LOGIN MODULE ENGINE ──
-function handleLogin() {
-  const email = document.querySelector('input[type="email"]').value.trim();
-  const pass  = document.querySelector('input[type="password"]').value;
+function selectRole(role){
+    const title = document.getElementById('loginTitle');
+    const hiddenField = document.getElementById('selectedRole');
+    const buttons = document.querySelectorAll('.role-btn');
+    const roleNote = document.getElementById('loginRoleNote');
 
-  if (!email || !pass) {
-    alert('Please enter your email and password.');
-    return;
-  }
+    buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-role') === role);
+    });
 
-  // Redirects straight to your dashboard file
-  window.location.href = 'dashboard.html';
-}
-
-// Allow Enter key to trigger login screen check
-document.addEventListener('keydown', function (e) {
-  // Guard check to ensure we only press enter to login if the inputs exist on screen
-  if (e.key === 'Enter' && document.querySelector('input[type="email"]')) {
-    handleLogin();
-  }
-});
-
-
-// ── MULTI-STEP REGISTRATION ROUTINES ──
-function nextStep(stepNumber) {
-  const currentStepEl = document.querySelector('.form-step.active');
-  const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
-  
-  for (let input of inputs) {
-    if (!input.value) {
-      alert('Please fill out all current fields before continuing.');
-      input.focus();
-      return;
+    if(title){
+        title.textContent = role === 'staff' ? 'Staff Login' : 'Patient Login';
     }
-  }
 
-  document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
-  document.getElementById(`step-${stepNumber}`).classList.add('active');
+    if(hiddenField){
+        hiddenField.value = role;
+    }
 
-  if (stepNumber === 2) {
-    document.getElementById('node-1').classList.add('completed');
-    document.getElementById('node-2').classList.add('active');
-    document.getElementById('line-1').classList.add('active');
-  } else if (stepNumber === 3) {
-    document.getElementById('node-2').classList.add('completed');
-    document.getElementById('node-3').classList.add('active');
-    document.getElementById('line-2').classList.add('active');
-  }
+    if(roleNote){
+        roleNote.textContent = role === 'staff'
+            ? 'Use your staff credentials to access the staff dashboard.'
+            : 'Access your patient account and manage appointments securely.';
+    }
 }
 
-function prevStep(stepNumber) {
-  document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
-  document.getElementById(`step-${stepNumber}`).classList.add('active');
+function login(){
+    const emailInput = document.getElementById('loginEmail');
+    const passwordInput = document.getElementById('loginPassword');
+    const emailMessage = document.getElementById('emailMessage');
+    const passwordMessage = document.getElementById('passwordMessage');
+    const emailField = emailInput?.closest('.login-field');
+    const passwordField = passwordInput?.closest('.login-field');
 
-  if (stepNumber === 1) {
-    document.getElementById('node-1').classList.remove('completed');
-    document.getElementById('node-2').classList.remove('active');
-    document.getElementById('line-1').classList.remove('active');
-  } else if (stepNumber === 2) {
-    document.getElementById('node-2').classList.remove('completed');
-    document.getElementById('node-3').classList.remove('active');
-    document.getElementById('line-2').classList.remove('active');
-  }
+    let valid = true;
+
+    if (!emailInput || !emailInput.value.trim()) {
+        emailMessage.textContent = 'Email is required.';
+        emailField?.classList.add('error');
+        valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+        emailMessage.textContent = 'Invalid email.';
+        emailField?.classList.add('error');
+        valid = false;
+    } else {
+        emailMessage.textContent = '';
+        emailField?.classList.remove('error');
+    }
+
+    if (!passwordInput || !passwordInput.value.trim()) {
+        passwordMessage.textContent = 'Password is required.';
+        passwordField?.classList.add('error');
+        valid = false;
+    } else {
+        passwordMessage.textContent = '';
+        passwordField?.classList.remove('error');
+    }
+
+    if (!valid) return;
+
+    const selectedRole = document.getElementById('selectedRole')?.value || 'patient';
+    window.location.href = selectedRole === 'staff' ? 'staff-dashboard.html' : 'dashboard.html';
 }
 
-function handleRegistration() {
-  const email = document.getElementById('regEmail').value.trim();
-  const password = document.getElementById('regPassword').value;
-  const confirmPassword = document.getElementById('confirmPassword').value;
+function togglePassword(){
+    const passwordInput = document.getElementById('loginPassword');
+    const toggleIcon = document.getElementById('passwordToggleIcon');
+    const toggleButton = document.querySelector('.password-toggle');
 
-  if (!email || !password || !confirmPassword) {
-    alert('Please enter your details completely.');
-    return;
-  }
+    if (!passwordInput || !toggleIcon || !toggleButton) return;
 
-  if (password !== confirmPassword) {
-    alert('Passwords do not match.');
-    return;
-  }
-
-  alert('Registration parameters verified. Directing pipeline data into your PHP endpoint.');
+    const isPassword = passwordInput.type === 'password';
+    passwordInput.type = isPassword ? 'text' : 'password';
+    toggleIcon.textContent = isPassword ? '🙈' : '👁';
+    toggleButton.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
 }
 
+function nextStep(step){
+    document.querySelectorAll('.form-step')
+    .forEach(el=>el.classList.remove('active'));
 
-// ── DYNAMIC CENTER ANNOUNCEMENT FEEDS ──
-let announcementsData = [
-  {
-    title: "Scheduled Maintenance: Portal Offline Notice",
-    content: "The Mamatid Patient Portal service systems will undergo brief server tuning tasks tomorrow starting at 11:00 PM PST. Expect limited connectivity for up to 30 minutes.",
-    date: "Posted: May 16, 2026"
-  },
-  {
-    title: "Free Regular Immunization Scheduling Open",
-    content: "The health center desk is now opening free slots for childhood immunizations and seasonal check-ups this week. Please bring your health tracker cards upon confirmation.",
-    date: "Posted: May 12, 2026"
-  }
+    document.getElementById(`step-${step}`)
+    .classList.add('active');
+}
+
+function prevStep(step){
+    document.querySelectorAll('.form-step')
+    .forEach(el=>el.classList.remove('active'));
+
+    document.getElementById(`step-${step}`)
+    .classList.add('active');
+}
+
+function handleRegistration(){
+
+    const pass =
+    document.getElementById('regPassword').value;
+
+    const confirm =
+    document.getElementById('confirmPassword').value;
+
+    if(pass !== confirm){
+        alert("Passwords do not match");
+        return;
+    }
+
+    alert("Account Created Successfully");
+
+    window.location.href="login.html";
+}
+
+const announcementsData = [
+{
+title:"Seasonal Flu Shots",
+content:"Free Flu vaccinations available.",
+date:"June 9, 2026"
+},
+{
+title:"Free Blood Pressure Screening",
+content:"Saturday screening program.",
+date:"June 6, 2026"
+}
 ];
 
-function renderAnnouncements() {
-  const container = document.getElementById("dynamicAnnouncementsContainer");
-  if (!container) return; 
+function renderAnnouncements(){
 
-  container.innerHTML = "";
+const container =
+document.getElementById("bulletinsContainer");
 
-  if (announcementsData.length === 0) {
-    container.innerHTML = `<div style="color: rgba(255,255,255,0.6); font-size:13px; text-align:center; padding:1rem;">No current notices posted by the health center.</div>`;
-    return;
-  }
+if(!container) return;
 
-  announcementsData.forEach(item => {
-    const cardHtml = `
-      <div class="announcement-item">
-        <h4>${item.title}</h4>
-        <p>${item.content}</p>
-        <span class="announcement-date">${item.date}</span>
-      </div>
-    `;
-    container.insertAdjacentHTML("beforeend", cardHtml);
-  });
+container.innerHTML='';
+
+announcementsData.forEach(item=>{
+
+container.innerHTML += `
+<div class="bulletin-item">
+<h4>${item.title}</h4>
+<p>${item.content}</p>
+<span class="bulletin-date">${item.date}</span>
+</div>
+`;
+
+});
 }
 
-function openAnnouncementModal() {
-  document.getElementById("announcementModal").classList.add("open");
-}
-
-function closeAnnouncementModal() {
-  document.getElementById("announcementModal").classList.remove("open");
-  document.getElementById("announcementForm").reset();
-}
-
-function submitNewAnnouncement(event) {
-  event.preventDefault();
-
-  const titleInput = document.getElementById("announceTitle").value.trim();
-  const contentInput = document.getElementById("announceContent").value.trim();
-
-  if (!titleInput || !contentInput) return;
-
-  const currentFormattedDate = new Date().toLocaleDateString('en-US', {
-    year: 'numeric', month: 'long', day: 'numeric'
-  });
-
-  announcementsData.unshift({
-    title: titleInput,
-    content: contentInput,
-    date: `Posted: ${currentFormattedDate}`
-  });
-
-  renderAnnouncements();
-  closeAnnouncementModal();
-}
+document.addEventListener("DOMContentLoaded",()=>{
+renderAnnouncements();
+});

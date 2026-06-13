@@ -1,172 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Register – Mamatid Health Center</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Health Account</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<div class="bg-orb" style="width:420px;height:420px;background:rgba(44,77,232,0.25);top:-100px;left:-120px;animation-duration:18s;"></div>
-<div class="bg-orb" style="width:300px;height:300px;background:rgba(240,127,114,0.2);top:60%;right:-80px;animation-duration:14s;animation-delay:-6s;"></div>
-<div class="bg-orb" style="width:260px;height:260px;background:rgba(255,255,255,0.06);bottom:-60px;left:30%;animation-duration:20s;animation-delay:-10s;"></div>
+<body class="auth-body">
 
-<div class="card reg-card">
+    <!-- TOP BAR -->
+    <header class="register-topbar">
 
-  <div class="left">
-    <div class="seal-ring">
-      <div class="seal-placeholder">
-        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" stroke-linecap="round">
-          <circle cx="12" cy="8" r="4"/>
-          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-        </svg>
-        <span>BRGY. MAMATID<br>CITY OF CABUYAO</span>
-      </div>
-    </div>
-
-    <div class="badge">
-      <span>✦</span> SERBISYONG WOW! MAMATID <span>✦</span>
-    </div>
-
-    <div class="left-title">Create Your<br>Account</div>
-
-    <div class="left-sub">
-      Serbisyong WOW! para sa mamamayan,<br>
-      your community health partner.
-    </div>
-  </div>
-
-  <div class="right">
-    
-    <div class="step-tracker">
-      <div class="step-node active" id="node-1">
-        <div class="circle">1</div>
-        <span>Personal</span>
-      </div>
-      <div class="step-line" id="line-1"></div>
-      <div class="step-node" id="node-2">
-        <div class="circle">2</div>
-        <span>Contact</span>
-      </div>
-      <div class="step-line" id="line-2"></div>
-      <div class="step-node" id="node-3">
-        <div class="circle">3</div>
-        <span>Security</span>
-      </div>
-    </div>
-
-    <form id="regForm" onsubmit="return false;">
-      
-      <div class="form-step active" id="step-1">
-        <div class="step-header">Patient Registration</div>
-
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <input type="text" id="firstName" placeholder="First Name (e.g., John)" required />
-          </div>
+        <div class="topbar-brand">
+            <img src="images/logo.png" alt="Mamatid Logo">
+            <span>Mamatid Health Center</span>
         </div>
 
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <input type="text" id="lastName" placeholder="Last Name (e.g., Thompson)" required />
-          </div>
+    </header>
+
+    <main class="register-page">
+
+        <!-- TITLE -->
+        <div class="register-header">
+
+            <h1>Create Your Health Account</h1>
+
+            <p>
+                Register to manage your health records, appointments,
+                and secure access to care services.
+            </p>
+
         </div>
 
-        <div class="form-row">
-          <div class="field flex-1">
-            <div class="input-wrap">
-              <input type="date" id="dob" required title="Date of Birth" />
+        <!-- STEP TRACKER -->
+        <div class="step-tracker">
+
+            <div class="step-node active" id="node-1">
+                <div class="step-circle">1</div>
+                <span>Personal Details</span>
             </div>
-          </div>
-          <div class="field flex-1">
-            <div class="input-wrap">
-              <select id="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
+
+            <div class="step-line" id="line-1"></div>
+
+            <div class="step-node" id="node-2">
+                <div class="step-circle">2</div>
+                <span>Address Contact</span>
             </div>
-          </div>
+
+            <div class="step-line" id="line-2"></div>
+
+            <div class="step-node" id="node-3">
+                <div class="step-circle">3</div>
+                <span>Security Setup</span>
+            </div>
+
         </div>
 
-        <div class="btn-group">
-          <a href="login.html" class="btn-secondary">CANCEL</a>
-          <button type="button" class="btn-login" onclick="nextStep(2)">CONTINUE ➔</button>
+        <div class="register-grid">
+
+            <!-- LEFT FORM -->
+            <section class="register-form-card">
+
+                <!-- STEP 1 -->
+                <div class="form-step active" id="step-1">
+
+                    <div class="step-header">
+                        STEP 1 OF 3 : PERSONAL INFORMATION
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="field flex-1">
+                            <div class="field-label">First Name</div>
+                            <div class="input-wrap">
+                                <input type="text" placeholder="e.g. John" required>
+                            </div>
+                        </div>
+
+                        <div class="field flex-1">
+                            <div class="field-label">Last Name</div>
+                            <div class="input-wrap">
+                                <input type="text" placeholder="e.g. Thompson" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="field flex-1">
+                            <div class="field-label">Date of Birth</div>
+                            <div class="input-wrap">
+                                <input type="date" required>
+                            </div>
+                        </div>
+
+                        <div class="field flex-1">
+                            <div class="field-label">Gender</div>
+                            <div class="input-wrap">
+                                <select required>
+                                    <option value="">Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label">Address</div>
+                        <div class="input-wrap">
+                            <input type="text"
+                                   placeholder="Mamatid Cabuyao, Laguna"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="field flex-1">
+                            <div class="field-label">Mobile Number</div>
+                            <div class="input-wrap">
+                                <input type="tel"
+                                       placeholder="09XX XXX XXXX"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="field flex-1">
+                            <div class="field-label">Emergency Contact</div>
+                            <div class="input-wrap">
+                                <input type="tel"
+                                       placeholder="09XX XXX XXXX"
+                                       required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="login.html" class="btn-secondary">
+                            ← Cancel
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn-primary"
+                            onclick="nextStep(2)">
+                            Continue →
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="form-step" id="step-2">
+
+                    <div class="step-header">
+                        STEP 2 OF 3 : ACCOUNT DETAILS
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label">Email Address</div>
+                        <div class="input-wrap">
+                            <input type="email"
+                                   placeholder="example@email.com"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label">Username</div>
+                        <div class="input-wrap">
+                            <input type="text"
+                                   placeholder="Enter Username"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+
+                        <button
+                            type="button"
+                            class="btn-secondary"
+                            onclick="prevStep(1)">
+                            ← Back
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-primary"
+                            onclick="nextStep(3)">
+                            Continue →
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="form-step" id="step-3">
+
+                    <div class="step-header">
+                        STEP 3 OF 3 : SECURITY SETUP
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label">Password</div>
+                        <div class="input-wrap">
+                            <input
+                                type="password"
+                                id="regPassword"
+                                placeholder="Create Password"
+                                oninput="checkStrength(this.value)"
+                                required>
+                        </div>
+
+                        <div class="strength-meter">
+                            <div class="strength-bar" id="sb1"></div>
+                            <div class="strength-bar" id="sb2"></div>
+                            <div class="strength-bar" id="sb3"></div>
+                            <div class="strength-bar" id="sb4"></div>
+                        </div>
+
+                        <div class="strength-label"
+                             id="strengthLabel"></div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-label">Confirm Password</div>
+                        <div class="input-wrap">
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm Password"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="agree-row">
+
+                        <input type="checkbox" id="agreeTerms">
+
+                        <label for="agreeTerms">
+                            I agree to the
+                            <a href="#">Terms of Service</a>
+                            and
+                            <a href="#">Privacy Policy</a>
+                        </label>
+
+                    </div>
+
+                    <div class="btn-group">
+
+                        <button
+                            type="button"
+                            class="btn-secondary"
+                            onclick="prevStep(2)">
+                            ← Back
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-primary"
+                            id="createBtn"
+                            onclick="handleRegistration()">
+                            Create Account
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- RIGHT SIDE -->
+            <aside class="register-sidebar">
+
+                <div class="info-card">
+
+                    <h3>Secure Registration</h3>
+
+                    <p>
+                        Your data is protected by end-to-end
+                        encryption and secure storage.
+                    </p>
+
+                </div>
+
+                <div class="info-card">
+
+                    <h3>Why Register</h3>
+
+                    <ul>
+                        <li>Book Appointments</li>
+                        <li>Access Health Records</li>
+                        <li>Manage Prescriptions</li>
+                    </ul>
+
+                </div>
+
+            </aside>
+
         </div>
-      </div>
 
-      <div class="form-step" id="step-2">
-        <div class="step-header">Contact Information</div>
+    </main>
 
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <input type="text" id="address" placeholder="Residential Address (e.g., Mamatid)" required />
-          </div>
-        </div>
+    <script src="script.js"></script>
 
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <input type="tel" id="mobile" placeholder="Mobile Number" required />
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            <input type="tel" id="emergencyContact" placeholder="Emergency Contact Number" required />
-          </div>
-        </div>
-
-        <div class="btn-group">
-          <button type="button" class="btn-secondary" onclick="prevStep(1)">BACK</button>
-          <button type="button" class="btn-login" onclick="nextStep(3)">CONTINUE ➔</button>
-        </div>
-      </div>
-
-      <div class="form-step" id="step-3">
-        <div class="step-header">Security Setup</div>
-
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,5 12,13 21,5"/></svg>
-            <input type="email" id="regEmail" placeholder="Enter Your Email" required autocomplete="email" />
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <input type="password" id="regPassword" placeholder="Create Password" required autocomplete="new-password" />
-          </div>
-        </div>
-
-        <div class="field">
-          <div class="input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password" required autocomplete="new-password" />
-          </div>
-        </div>
-
-        <div class="btn-group">
-          <button type="button" class="btn-secondary" onclick="prevStep(2)">BACK</button>
-          <button type="button" class="btn-login" onclick="handleRegistration()">REGISTER</button>
-        </div>
-      </div>
-
-    </form>
-
-    <div class="register-row">
-      Already have an account? <a href="login.html">Login Here</a>
-    </div>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>

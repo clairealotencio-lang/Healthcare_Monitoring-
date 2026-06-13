@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="staff-dashboard-body">
+  <div class="staff-dashboard-container">
+    <aside class="staff-sidebar">
+      <div class="sidebar-logo">
+        <img src="images/logo.png" alt="Logo">
+        <span>Mamatid Health Center</span>
+      </div>
+
+      <h3>Staff Panel</h3>
+
+      <nav class="staff-nav">
+        <a href="#" class="active">Overview</a>
+        <a href="#">Queue Management</a>
+        <a href="#">Appointments</a>
+        <a href="#">Patient Records</a>
+        <a href="#">Reports</a>
+      </nav>
+    </aside>
+
+    <main class="staff-main">
+      <header class="staff-topbar">
+        <div>
+          <h1>Staff Dashboard</h1>
+          <p>Welcome back, Nurse Jane. Here is today’s clinic overview.</p>
+        </div>
+        <div class="staff-topbar-actions">
+          <span class="staff-badge">On Duty</span>
+          <a href="login.html" class="staff-logout">Logout</a>
+        </div>
+      </header>
+
+      <section class="staff-summary-grid">
+        <div class="staff-card highlight">
+          <div class="staff-card-title">
+            <h4>Patients Waiting</h4>
+            <span class="staff-pill">Live</span>
+          </div>
+          <div class="staff-stat">24</div>
+          <p>8 urgent • 16 regular</p>
+        </div>
+        <div class="staff-card">
+          <div class="staff-card-title">
+            <h4>Appointments Today</h4>
+            <span class="staff-pill alt">Booked</span>
+          </div>
+          <div class="staff-stat">18</div>
+          <p>3 walk-ins pending</p>
+        </div>
+        <div class="staff-card">
+          <div class="staff-card-title">
+            <h4>Completed Visits</h4>
+            <span class="staff-pill alt">Done</span>
+          </div>
+          <div class="staff-stat">12</div>
+          <p>2 still in consultation</p>
+        </div>
+      </section>
+
+      <section class="staff-grid-2">
+        <div class="staff-card wide-card">
+          <div class="staff-card-header">
+            <h4>Queue Board</h4>
+            <a href="#">View All</a>
+          </div>
+          <div class="staff-table">
+            <div class="staff-row">
+              <span>Patient #42</span>
+              <span>Now Serving</span>
+              <span>Dr. Reyes</span>
+            </div>
+            <div class="staff-row">
+              <span>Patient #43</span>
+              <span>Next</span>
+              <span>Dr. Cruz</span>
+            </div>
+            <div class="staff-row">
+              <span>Patient #44</span>
+              <span>Pending</span>
+              <span>Dr. Santos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <div class="staff-card-header">
+            <h4>Today’s Schedule</h4>
+            <a href="#">Update</a>
+          </div>
+          <div class="staff-list">
+            <div class="staff-list-item"><span>08:00 • Check-up</span><span class="staff-pill">Ready</span></div>
+            <div class="staff-list-item"><span>10:30 • Vaccine</span><span class="staff-pill">Pending</span></div>
+            <div class="staff-list-item"><span>01:00 • Lab Results</span><span class="staff-pill">Review</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="staff-grid-2">
+        <div class="staff-card">
+          <div class="staff-card-header">
+            <h4>Pending Tasks</h4>
+            <a href="#">Open</a>
+          </div>
+          <div class="staff-list">
+            <div class="staff-list-item"><span>Verify new patients</span><span class="staff-pill">3</span></div>
+            <div class="staff-list-item"><span>Update health records</span><span class="staff-pill">5</span></div>
+            <div class="staff-list-item"><span>Call for follow-up</span><span class="staff-pill">2</span></div>
+          </div>
+        </div>
+
+        <div class="staff-card">
+          <div class="staff-card-header">
+            <h4>Clinic Alerts</h4>
+            <a href="#">See All</a>
+          </div>
+          <div class="staff-list">
+            <div class="staff-list-item"><span>Flu vaccine stock low</span><span class="staff-pill alt">Alert</span></div>
+            <div class="staff-list-item"><span>2 doctors delayed</span><span class="staff-pill alt">Notice</span></div>
+            <div class="staff-list-item"><span>Lab sample pickup due</span><span class="staff-pill alt">Reminder</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

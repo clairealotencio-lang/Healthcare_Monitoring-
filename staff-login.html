@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Portal Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="staff-login-body">
+  <div class="staff-login-card">
+    <div class="staff-login-side">
+      <div class="login-seal">SP</div>
+      <h1>Staff Portal</h1>
+      <p>Manage patient queues, appointments, and daily center operations in one place.</p>
+    </div>
+
+    <div class="staff-login-form">
+      <h2>Staff Sign In</h2>
+      <p>Access the staff dashboard securely.</p>
+
+      <div class="login-field">
+        <label for="staffEmail">Staff Email</label>
+        <input id="staffEmail" type="email" placeholder="Enter your staff email" required autocomplete="email">
+      </div>
+
+      <div class="login-field">
+        <label for="staffPassword">Password</label>
+        <input id="staffPassword" type="password" placeholder="Enter your password" required autocomplete="current-password">
+      </div>
+
+      <button class="login-btn" onclick="goToStaffDashboard()">SIGN IN</button>
+
+      <div class="staff-login-link">
+        <a href="login.html">Back to Patient Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goToStaffDashboard() {
+      window.location.href = "staff-dashboard.html";
+    }
+  </script>
+</body>
+</html>
