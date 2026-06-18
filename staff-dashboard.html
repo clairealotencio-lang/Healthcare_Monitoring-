@@ -1,133 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body class="staff-dashboard-body">
-  <div class="staff-dashboard-container">
-    <aside class="staff-sidebar">
-      <div class="sidebar-logo">
-        <img src="images/logo.png" alt="Logo">
-        <span>Mamatid Health Center</span>
-      </div>
 
-      <h3>Staff Panel</h3>
+<div class="dashboard-wrapper">
 
-      <nav class="staff-nav">
-        <a href="#" class="active">Overview</a>
-        <a href="#">Queue Management</a>
-        <a href="#">Appointments</a>
-        <a href="#">Patient Records</a>
-        <a href="#">Reports</a>
-      </nav>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="">
+            <h3>Mamatid Health Center</h3>
+        </div>
+
+        <div class="user-box">
+            <img src="images/user.jpg" alt="">
+            <div>
+                <h4>Welcome,</h4>
+                <p>user!</p>
+            </div>
+        </div>
+
+        <div class="menu-title">MENU</div>
+
+        <nav class="sidebar-menu">
+            <a href="#" class="active">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+
+            <a href="#">
+                <i class="fas fa-user"></i>
+                Patient Record
+            </a>
+
+            <a href="#">
+                <i class="fas fa-calendar"></i>
+                Appointment Schedule
+            </a>
+
+            <a href="#">
+                <i class="fas fa-file"></i>
+                Report
+            </a>
+
+            <a href="#">
+                <i class="fas fa-users"></i>
+                Queue Management
+            </a>
+        </nav>
+
+        <div class="logout-area">
+            <a href="login.html">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </div>
+
     </aside>
 
-    <main class="staff-main">
-      <header class="staff-topbar">
-        <div>
-          <h1>Staff Dashboard</h1>
-          <p>Welcome back, Nurse Jane. Here is today’s clinic overview.</p>
-        </div>
-        <div class="staff-topbar-actions">
-          <span class="staff-badge">On Duty</span>
-          <a href="login.html" class="staff-logout">Logout</a>
-        </div>
-      </header>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
 
-      <section class="staff-summary-grid">
-        <div class="staff-card highlight">
-          <div class="staff-card-title">
-            <h4>Patients Waiting</h4>
-            <span class="staff-pill">Live</span>
-          </div>
-          <div class="staff-stat">24</div>
-          <p>8 urgent • 16 regular</p>
-        </div>
-        <div class="staff-card">
-          <div class="staff-card-title">
-            <h4>Appointments Today</h4>
-            <span class="staff-pill alt">Booked</span>
-          </div>
-          <div class="staff-stat">18</div>
-          <p>3 walk-ins pending</p>
-        </div>
-        <div class="staff-card">
-          <div class="staff-card-title">
-            <h4>Completed Visits</h4>
-            <span class="staff-pill alt">Done</span>
-          </div>
-          <div class="staff-stat">12</div>
-          <p>2 still in consultation</p>
-        </div>
-      </section>
+        <!-- TOPBAR -->
+        <div class="topbar">
 
-      <section class="staff-grid-2">
-        <div class="staff-card wide-card">
-          <div class="staff-card-header">
-            <h4>Queue Board</h4>
-            <a href="#">View All</a>
-          </div>
-          <div class="staff-table">
-            <div class="staff-row">
-              <span>Patient #42</span>
-              <span>Now Serving</span>
-              <span>Dr. Reyes</span>
+            <h1>Dashboard</h1>
+
+            <div class="topbar-right">
+                <button class="notif-btn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <img src="images/user.jpg" alt="">
+                
+                <!-- Tinanggal na rito yung logout button para mas malinis tignan -->
             </div>
-            <div class="staff-row">
-              <span>Patient #43</span>
-              <span>Next</span>
-              <span>Dr. Cruz</span>
+
+        </div>
+
+        <!-- ALERT -->
+        <div class="alert-card">
+            <div class="alert-icon">
+                <i class="fas fa-bullhorn"></i>
             </div>
-            <div class="staff-row">
-              <span>Patient #44</span>
-              <span>Pending</span>
-              <span>Dr. Santos</span>
+
+            <div>
+                <h3>Health Alert: Seasonal Flu Shots</h3>
+                <p>
+                    Free Flu vaccinations are now available for all
+                    registered. No appointment needed for walk-ins
+                    between 2 PM-4PM Daily.
+                </p>
             </div>
-          </div>
         </div>
 
-        <div class="staff-card">
-          <div class="staff-card-header">
-            <h4>Today’s Schedule</h4>
-            <a href="#">Update</a>
-          </div>
-          <div class="staff-list">
-            <div class="staff-list-item"><span>08:00 • Check-up</span><span class="staff-pill">Ready</span></div>
-            <div class="staff-list-item"><span>10:30 • Vaccine</span><span class="staff-pill">Pending</span></div>
-            <div class="staff-list-item"><span>01:00 • Lab Results</span><span class="staff-pill">Review</span></div>
-          </div>
-        </div>
-      </section>
+        <!-- CALENDAR + APPOINTMENTS -->
+        <div class="dashboard-grid">
 
-      <section class="staff-grid-2">
-        <div class="staff-card">
-          <div class="staff-card-header">
-            <h4>Pending Tasks</h4>
-            <a href="#">Open</a>
-          </div>
-          <div class="staff-list">
-            <div class="staff-list-item"><span>Verify new patients</span><span class="staff-pill">3</span></div>
-            <div class="staff-list-item"><span>Update health records</span><span class="staff-pill">5</span></div>
-            <div class="staff-list-item"><span>Call for follow-up</span><span class="staff-pill">2</span></div>
-          </div>
+            <div class="calendar-card">
+                <h2>February 2026</h2>
+
+                <table>
+                    <tr>
+                        <th>SUN</th>
+                        <th>MON</th>
+                        <th>TUE</th>
+                        <th>WED</th>
+                        <th>THU</th>
+                        <th>FRI</th>
+                        <th>SAT</th>
+                    </tr>
+
+                    <tr><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td>1</td></tr>
+                    <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+                    <tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+                    <tr><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+                    <tr><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td></td></tr>
+                </table>
+            </div>
+
+            <div class="appointment-card">
+
+                <div class="appointment-header">
+                    <h3>Today's Appointment</h3>
+                    <a href="#">View All</a>
+                </div>
+
+                <div class="appointment-item">
+                    <span>8:00 AM</span>
+                    <div>
+                        <strong>John Doe</strong>
+                        <p>General OPD</p>
+                    </div>
+                    <span class="status confirmed">Confirmed</span>
+                </div>
+
+                <div class="appointment-item">
+                    <span>8:00 AM</span>
+                    <div>
+                        <strong>Maria Santos</strong>
+                        <p>Pediatrics</p>
+                    </div>
+                    <span class="status confirmed">Confirmed</span>
+                </div>
+
+                <div class="appointment-item">
+                    <span>8:00 AM</span>
+                    <div>
+                        <strong>Pedro Reyes</strong>
+                        <p>Cardiology</p>
+                    </div>
+                    <span class="status confirmed">Confirmed</span>
+                </div>
+
+                <div class="appointment-item">
+                    <span>8:00 AM</span>
+                    <div>
+                        <strong>Ana Lim</strong>
+                        <p>Diagnosis</p>
+                    </div>
+                    <span class="status pending">Pending</span>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="staff-card">
-          <div class="staff-card-header">
-            <h4>Clinic Alerts</h4>
-            <a href="#">See All</a>
-          </div>
-          <div class="staff-list">
-            <div class="staff-list-item"><span>Flu vaccine stock low</span><span class="staff-pill alt">Alert</span></div>
-            <div class="staff-list-item"><span>2 doctors delayed</span><span class="staff-pill alt">Notice</span></div>
-            <div class="staff-list-item"><span>Lab sample pickup due</span><span class="staff-pill alt">Reminder</span></div>
-          </div>
+        <!-- ANNOUNCEMENTS -->
+        <div class="announcement-section">
+
+            <div class="section-header">
+                <h2>Latest Announcement</h2>
+
+                <div>
+                    <button class="view-btn">View All</button>
+                    <button class="add-btn">+ Add</button>
+                </div>
+            </div>
+
+            <div class="announcement-grid">
+
+                <div class="announcement-card">
+                    <h4>Holiday Hours Update</h4>
+                    <p>
+                        Please note that the health center
+                        will close early at 4:00 PM Friday.
+                    </p>
+                </div>
+
+                <div class="announcement-card">
+                    <h4>New Anti-Rabbies Booster</h4>
+                    <p>
+                        Brgy. Mamatid Health Center will conduct
+                        a FREE Anti-Rabies Vaccination.
+                    </p>
+                </div>
+
+            </div>
+
         </div>
-      </section>
+
     </main>
-  </div>
+
+</div>
+
 </body>
 </html>

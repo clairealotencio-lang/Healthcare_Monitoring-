@@ -1,4 +1,40 @@
 /* ==========================================================================
+   COLOR PALETTE SUMMARY & VARIABLES
+   ========================================================================== */
+:root {
+    /* Login & General Registration Variables */
+    --dark-bg: #1E1E1E;
+    --left-blue: #2947A7;
+    --right-salmon: #F08A80;
+    --button-blue: #2D49C7;
+    --button-hover: #2440B0;
+    --white: #FFFFFF;
+
+    /* Register Form Specific Variables */
+    --salmon: #E78273;
+    --salmon-hover: #D96A58;
+    --main-bg: #D9D9D9;
+    --card-bg: #FFFFFF;
+    --primary-blue: #2196F3;
+    --input-border: #8AB4F8;
+    --danger: #EF4444;
+    --light-gray: #D1D5DB;
+    --black: #000000;
+
+    /* New Dashboard Palette Variables */
+    --dashboard-bg: #E5E5E5;
+    --sidebar: #F5F5F5;
+    --header: #EB593E;
+    --header-hover: #D94C32;
+    --blue: #356DF3;
+    --blue-dark: #2947C7;
+    --green: #2BB673;
+    --card: #DCDCDC;
+    --border: #B8B8B8;
+    --text: #1F1F1F;
+}
+
+/* ==========================================================================
    GLOBAL RESET & FONTS
    ========================================================================== */
 * {
@@ -8,20 +44,24 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    background: var(--dashboard-bg);
+    color: var(--text);
+}
+
 body.login-page {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    /* Soft Medical Green/Teal Radial Gradient para sa Health Center vibe */
-    background: #1a237e;
+    background: var(--dark-bg);
 }
 
 /* Base body background para sa registration page */
 body.auth-body {
     min-height: 100vh;
-    background: radial-gradient(circle at center, #1e3a8a 0%, #0d1b6e 100%);
+    background: #1E1E1E;
     color: white;
     padding: 20px;
 }
@@ -31,7 +71,6 @@ body.auth-body {
    ========================================================================== */
 .container {
     width: 1100px;
-    /* INAYOS: Ginawang min-height at auto para mag-stretch at lumitaw ang Register Link */
     min-height: 680px; 
     height: auto;
     display: grid;
@@ -40,7 +79,7 @@ body.auth-body {
     border-radius: 24px;
     overflow: hidden; 
     box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-    background: #0d1b6e; /* Madilim na base para lutang ang puting fog ng salamin */
+    background: var(--dark-bg);
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -55,13 +94,11 @@ body.auth-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Matingkad na Emerald/Teal Gradient para sa Health Concept */
-    background: linear-gradient(135deg, #1e3a8a 0%, #1a237e 60%, #0d1b6e 100%);
+    background: var(--left-blue);
     z-index: 1;
     overflow: hidden; 
 }
 
-/* ANG UNANG KURBA: Lumilikha ng itaas na bahagi ng alon */
 .login-left::after {
     content: "";
     position: absolute;
@@ -69,14 +106,12 @@ body.auth-body {
     right: -250px;
     width: 600px;
     height: 600px;
-    /* Malinis na deep health teal */
-    background: linear-gradient(135deg, #1a237e 0%, #0d1b6e 100%);
+    background: var(--left-blue);
     border-radius: 50%;
     box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.4);
     z-index: 2;
 }
 
-/* ANG PANGALAWANG KURBA: Lumilikha ng ibabang bahagi ng alon */
 .login-left::before {
     content: "";
     position: absolute;
@@ -84,7 +119,7 @@ body.auth-body {
     right: -150px;
     width: 550px;
     height: 550px;
-    background: #0d1b6e; /* Tugma sa base background ng container */
+    background: var(--left-blue);
     border-radius: 50%;
     box-shadow: -10px -10px 30px rgba(0, 0, 0, 0.25);
     z-index: 3; 
@@ -98,34 +133,26 @@ body.auth-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 30px 45px; /* Inayusan ang padding para sa balance layout */
+    padding: 30px 45px; 
     z-index: 5;
-    background: #f07a6a !important; 
+    background: var(--right-salmon) !important;
 }
 
-/* HIGH-CONTRAST GLASSMORPHISM CARD */
 .login-form-card {
-    /* Pinataas ang opasidad para maging mas frosted at madaling basahin */
-    background: rgba(255, 255, 255, 0.08); 
-    backdrop-filter: blur(30px); 
-    -webkit-backdrop-filter: blur(30px);
-    /* Mas makapal at maliwanag na border outline */
-    border: 1.5px solid rgba(255, 255, 255, 0.25); 
-    border-radius: 24px;
-    /* INAYOS: Binawasan ang padding sa 45px top at 25px bottom para magkasya ang lahat */
-    padding: 45px 35px 25px; 
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5),
-                inset 0 1px 2px rgba(255, 255, 255, 0.4); 
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
     position: relative;
     width: 100%;
+    padding: 45px 35px 25px; 
 }
 
-/* Lumulutang na User Icon (Kulay Health Teal/Green) */
 .login-icon {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #3949ab, #1a237e);
+    background: linear-gradient(135deg, #3949ab, var(--left-blue));
     color: white;
     display: flex;
     align-items: center;
@@ -135,7 +162,7 @@ body.auth-body {
     top: -35px; 
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 10px 25px rgba(26,35,126,0.4),
+    box-shadow: 0 10px 25px rgba(41,71,167,0.4),
                 0 0 0 6px rgba(255, 255, 255, 0.12); 
     z-index: 999; 
 }
@@ -159,10 +186,9 @@ body.auth-body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Pure White ang pangalan ng Barangay para sa malalabong mata */
 .logo-area h4 {
     font-size: 18px;
-    color: #ffffff;
+    color: var(--white);
     font-weight: 700;
 }
 
@@ -174,8 +200,8 @@ body.auth-body {
     width: fit-content;
     padding: 6px 16px;
     border-radius: 30px;
-    background: rgba(26, 35, 126, 0.15);
-    border: 1px solid rgba(26, 35, 126, 0.3);
+    background: rgba(41, 71, 167, 0.15);
+    border: 1px solid rgba(41, 71, 167, 0.3);
     color: #ffb3a7;
     margin-bottom: 25px;
     font-size: 11px;
@@ -189,48 +215,49 @@ body.auth-body {
     font-weight: 800;
     margin-bottom: 20px;
     text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    color: var(--white);
 }
 
 .left-panel p {
     font-size: 16px; 
     max-width: 400px;
-    color: #ffeee6; /* Light Mint Green para sa high contrast */
+    color: var(--white);
     opacity: 0.9;
 }
 
 .login-right h2 {
     text-align: center;
-    color: #ffffff;
-    font-size: 28px; 
+    color: var(--black);
+    font-size: 52px;
     font-weight: 800;
     margin-top: 5px;
 }
 
 .login-right p.subtitle {
     text-align: center;
-    color: #cbd5e1; 
+    color: #333;
     font-size: 14px;
     margin-bottom: 15px; 
 }
 
 /* ==========================================================================
-   ROLE SWITCH (PINAG-ISANG LABAS AT KULAY)
+   ROLE SWITCH
    ========================================================================== */
 .role-switch {
     display: flex;
-    background: #112229;
-    border-radius: 30px; /* Pinanatili ang swabe at bilog na corner sa Login */
+    background: var(--white);
+    border-radius: 30px; 
     padding: 5px;
     margin-bottom: 20px;
-    border: 1px solid #243b46;
+    border: 1px solid #ccc;
 }
 
 .role-switch button {
     flex: 1;
     background: transparent;
     border: none;
-    color: #a0b2bc;
-    padding: 12px; /* Swabeng kapal para sa click area */
+    color: #555;
+    padding: 12px; 
     font-weight: 700;
     font-size: 15px;
     cursor: pointer;
@@ -240,20 +267,20 @@ body.auth-body {
 
 .role-switch button.active, 
 .role-switch .active {
-    background: #f07a6a; 
-    color: #ffffff; /* Dark text sa light background para sa AAA Contrast Standard */
-    box-shadow: 0 4px 15px rgba(26,35,126,0.4);
+    background: var(--button-blue);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(45,73,199,0.4);
 }
 
 /* ==========================================================================
-   FORM CONTROLS (ACCESSIBLE INPUTS)
+   FORM CONTROLS (LOGIN)
    ========================================================================== */
 .login-right label {
     display: block;
     margin: 14px 0 6px;
     font-size: 13px; 
     font-weight: 700;
-    color: #ffffff; 
+    color: var(--black);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -262,19 +289,19 @@ body.auth-body {
 .login-right input[type="password"] {
     width: 100%;
     padding: 15px 16px; 
-    border: 2px solid rgba(255, 255, 255, 0.25); 
+    border: 1px solid #999;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.2); 
+    background: var(--white);
     outline: none;
-    color: white;
+    color: var(--black);
     font-size: 16px; 
     transition: all 0.3s ease;
 }
 
 .login-right input:focus {
-    background: rgba(0, 0, 0, 0.4);
-    border-color: #3949ab; 
-    box-shadow: 0 0 15px rgba(57,73,171,0.4);
+    background: var(--white);
+    border-color: var(--button-blue); 
+    box-shadow: 0 0 15px rgba(45,73,199,0.2);
 }
 
 .login-right i {
@@ -291,7 +318,7 @@ body.auth-body {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #ffb3a7; 
+    color: #555;
     font-weight: 700;
     font-size: 14px;
 }
@@ -311,7 +338,7 @@ body.auth-body {
     align-items: center;
     gap: 10px;
     margin: 0;
-    color: #e2e8f0; 
+    color: var(--black);
     text-transform: none;
     font-weight: 600;
 }
@@ -319,12 +346,12 @@ body.auth-body {
 .options input[type="checkbox"] {
     width: 20px; 
     height: 20px;
-    accent-color: #3949ab;
+    accent-color: var(--button-blue);
     cursor: pointer;
 }
 
 .options a {
-    color: #ffb3a7;
+    color: var(--button-blue);
     font-weight: 600;
     text-decoration: none;
 }
@@ -334,33 +361,33 @@ body.auth-body {
 }
 
 /* ==========================================================================
-   LOGIN BUTTON (PINAG-ISANG LAYOUT)
+   LOGIN BUTTON
    ========================================================================== */
 .login-btn {
     width: 100%;
     height: 48px; 
     border: none;
-    border-radius: 12px;
-    background: linear-gradient(to right, #3949ab, #1a237e); 
-    color: white;
+    border-radius: 14px;
+    background: var(--button-blue);
+    color: var(--white); 
     font-weight: 800;
     cursor: pointer;
     font-size: 16px; 
     letter-spacing: 1px;
-    box-shadow: 0 6px 20px rgba(26,35,126,0.4);
+    box-shadow: 0 6px 20px rgba(45,73,199,0.3);
     transition: all 0.3s ease;
 }
 
 .login-btn:hover {
-    background: #115e59;
+    background: var(--button-hover);
     transform: translateY(-1px);
-    box-shadow: 0 8px 25px rgba(57,73,171,0.6);
+    box-shadow: 0 8px 25px rgba(36,64,176,0.4);
 }
 
 .divider {
     text-align: center;
     margin: 15px 0; 
-    color: #cbd5e1;
+    color: #333;
     font-size: 14px;
 }
 
@@ -372,10 +399,10 @@ body.auth-body {
 
 .socials button {
     padding: 14px;
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid #999;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
+    background: var(--white);
+    color: var(--black);
     font-weight: 600;
     cursor: pointer;
     font-size: 14px;
@@ -383,19 +410,19 @@ body.auth-body {
 }
 
 .socials button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #3949ab;
+    background: #f5f5f5;
+    border-color: var(--button-blue);
 }
 
 .register {
     text-align: center;
     margin-top: 15px; 
     font-size: 15px; 
-    color: #cbd5e1;
+    color: #333;
 }
 
 .register a {
-    color: #ffb3a7;
+    color: var(--button-blue);
     font-weight: 700;
     text-decoration: none;
 }
@@ -408,11 +435,11 @@ body.auth-body {
    MULTI-STEP REGISTRATION DISPLAY & TRACKER RULES
    ========================================================================== */
 .form-step {
-    display: none; /* Itatago kapag hindi active */
+    display: none; 
 }
 
 .form-step.active {
-    display: block; /* Ipakikita kapag active */
+    display: block; 
 }
 
 .step-tracker {
@@ -420,7 +447,7 @@ body.auth-body {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
-    background: #0d1b6e;
+    background: #1E1E1E;
     padding: 15px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -437,16 +464,16 @@ body.auth-body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #1a237e;
+    background: var(--light-gray);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: #ffb3a7;
+    color: var(--black);
 }
 
 .step-node.active .step-circle {
-    background: #f07a6a;
+    background: var(--danger);
     color: white;
 }
 
@@ -458,8 +485,12 @@ body.auth-body {
 .step-line {
     flex: 1;
     height: 2px;
-    background: #1a237e;
+    background: var(--light-gray);
     margin: 0 15px;
+}
+
+.step-line.active {
+    background: var(--danger);
 }
 
 /* ==========================================================================
@@ -469,6 +500,7 @@ body.auth-body {
     max-width: 1300px;
     margin: auto;
     padding: 30px;
+    background: var(--main-bg);
 }
 
 .register-topbar {
@@ -476,7 +508,7 @@ body.auth-body {
     align-items: center;
     justify-content: space-between;
     padding: 15px 30px;
-    background: #0d1b6e;
+    background: var(--salmon);
     border-radius: 16px;
     margin-bottom: 25px;
 }
@@ -485,7 +517,7 @@ body.auth-body {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #fff;
+    color: var(--white);
 }
 
 .topbar-brand img {
@@ -500,11 +532,11 @@ body.auth-body {
 
 .register-header h1 {
     font-size: 36px;
-    color: #fff;
+    color: var(--black);
 }
 
 .register-header p {
-    color: #cbd5e1;
+    color: #333;
 }
 
 .register-grid {
@@ -513,12 +545,18 @@ body.auth-body {
     gap: 25px;
 }
 
-.register-form-card,
-.register-sidebar {
-    background: #1e3a8a;
+.register-form-card {
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 25px;
-    border: 1px solid #1a237e;
+    border: 3px solid var(--primary-blue);
+}
+
+.register-sidebar {
+    background: #F8F8F8;
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid var(--light-gray);
 }
 
 .field {
@@ -527,7 +565,7 @@ body.auth-body {
 
 .field-label {
     margin-bottom: 8px;
-    color: #fff;
+    color: var(--black);
     font-weight: 600;
 }
 
@@ -535,10 +573,10 @@ body.auth-body {
 .input-wrap select {
     width: 100%;
     padding: 14px;
-    border: none;
+    border: 1px solid var(--input-border);
     border-radius: 10px;
-    background: #0d1b6e;
-    color: #fff;
+    background: var(--white);
+    color: var(--black);
 }
 
 .form-row {
@@ -567,42 +605,48 @@ body.auth-body {
 }
 
 .btn-primary {
-    background: #f07a6a;
-    color: white;
+    background: var(--salmon);
+    color: var(--white);
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--salmon-hover);
 }
 
 .btn-secondary {
-    background: #0d1b6e;
-    color: white;
-    border: 1px solid #1a237e;
+    background: var(--light-gray);
+    color: var(--black);
+    border: 1px solid #ccc;
 }
 
 .info-card {
-    background: #0d1b6e;
+    background: var(--white);
     border-radius: 14px;
     padding: 20px;
     margin-bottom: 15px;
-    color: white;
-    border-left: 4px solid #f07a6a;
+    color: var(--black);
+    border-left: 4px solid var(--salmon);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 /* ==========================================================================
-   PATIENT DASHBOARD
+   PATIENT DASHBOARD (ANTI-OVERLAP FIX)
    ========================================================================== */
 .dashboard-container {
     display: flex;
     min-height: 100vh;
-    background: #0d1b6e;
+    background: var(--dashboard-bg); 
 }
 
 .sidebar {
     width: 270px;
-    background: #0d1b6e;
-    color: white;
+    background: var(--sidebar); 
+    color: var(--text); 
     padding: 25px;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid var(--border); 
 }
 
 .sidebar-logo {
@@ -618,10 +662,11 @@ body.auth-body {
 
 .user-card {
     text-align: center;
-    background: #1e3a8a;
+    background: var(--card); 
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 25px;
+    color: var(--text);
 }
 
 .user-card img {
@@ -638,17 +683,17 @@ body.auth-body {
 }
 
 .sidebar-menu a {
-    color: #cbd5e1;
+    color: var(--text);
     text-decoration: none;
     padding: 12px;
     border-radius: 10px;
     transition: all 0.2s ease;
 }
 
-.sidebar-menu a.active,
+.sidebar-menu .active,
 .sidebar-menu a:hover {
-    background: #f07a6a;
-    color: white;
+    background: #F8D7D2; 
+    color: var(--header); 
 }
 
 .logout-btn {
@@ -658,7 +703,7 @@ body.auth-body {
 .logout-btn a {
     display: block;
     text-align: center;
-    background: #ef4444;
+    background: var(--danger);
     color: white;
     text-decoration: none;
     padding: 12px;
@@ -676,7 +721,10 @@ body.auth-body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
-    color: white;
+    background: var(--header); 
+    color: var(--white);
+    padding: 15px 20px;
+    border-radius: 12px;
 }
 
 .topbar-right {
@@ -692,8 +740,8 @@ body.auth-body {
 }
 
 .health-alert {
-    background: #f07a6a;
-    color: white;
+    background: var(--card); 
+    color: var(--text); 
     padding: 20px;
     border-radius: 16px;
     display: flex;
@@ -705,42 +753,50 @@ body.auth-body {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
+    align-items: start; /* Pinipigilan nito ang sapilitang pag-stretch na nagdudulot ng overlap */
 }
 
+/* ANTI-OVERLAP REGULATION FOR ALL CARDS */
 .queue-card,
 .load-card,
 .chat-card {
-    background: #1e3a8a;
-    color: white;
-    border-radius: 20px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    background: var(--card); 
+    color: var(--text);
+    border-radius: 16px; 
+    padding: 25px; 
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Maayos na distansya sa pagitan ng mga elemento sa loob */
+    height: auto; /* Hinahayaang lumaki nang natural base sa laman */
+    overflow: hidden;
 }
 
 .queue-number {
     font-size: 70px;
     font-weight: 700;
-    margin: 20px 0;
-    color: #ffb3a7;
+    margin: 10px 0;
+    color: var(--blue); 
 }
 
 .queue-stats {
     display: flex;
     gap: 15px;
-    margin-top: 20px;
 }
 
 .small-card {
     flex: 1;
-    background: #0d1b6e;
+    background: var(--sidebar);
     padding: 15px;
     border-radius: 12px;
+    border: 1px solid var(--border);
 }
 
 .queue-buttons {
     display: flex;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: auto; /* Itinutulak ang buttons sa pinaka-ibaba nang natural */
 }
 
 .ticket-btn,
@@ -751,19 +807,78 @@ body.auth-body {
     border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .ticket-btn {
-    background: #f07a6a;
-    color: white;
+    background: var(--header); 
+    color: var(--white);
+}
+
+.ticket-btn:hover {
+    background: var(--header-hover);
 }
 
 .consult-btn {
-    background: #0d1b6e;
-    color: white;
-    border: 1px solid #1a237e;
+    background: var(--blue-dark); 
+    color: var(--white);
 }
 
+/* ==========================================================================
+   START CHAT BUTTON VARIATIONS (BLUE OR RED/ORANGE)
+   ========================================================================== */
+/* Default Shared Structure */
+.start-chat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%; /* Sumasakop sa buong lapad ng card para sa malinis na UI */
+    padding: 12px 22px;
+    color: var(--white) !important;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Swak sa ibaba ng card */
+}
+
+/* Option 1: Modern Blue (Default Class) */
+.start-chat-btn,
+.start-chat-btn.btn-blue {
+    background: var(--blue);
+    box-shadow: 0 4px 12px rgba(53, 109, 243, 0.25);
+}
+
+.start-chat-btn:hover,
+.start-chat-btn.btn-blue:hover {
+    background: var(--blue-dark);
+    box-shadow: 0 6px 16px rgba(41, 71, 199, 0.35);
+    transform: translateY(-1px);
+}
+
+/* Option 2: Brand Red/Orange (Dagdagan lang ng class na .btn-red sa HTML) */
+.start-chat-btn.btn-red {
+    background: var(--header);
+    box-shadow: 0 4px 12px rgba(235, 89, 62, 0.25);
+}
+
+.start-chat-btn.btn-red:hover {
+    background: var(--header-hover);
+    box-shadow: 0 6px 16px rgba(217, 76, 50, 0.35);
+    transform: translateY(-1px);
+}
+
+.start-chat-btn:active {
+    transform: translateY(1px);
+}
+
+/* ==========================================================================
+   ANNOUNCEMENTS & PROGRESS TRACKERS
+   ========================================================================== */
 .announcement-section {
     margin-top: 25px;
 }
@@ -772,116 +887,377 @@ body.auth-body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    color: white;
+    color: var(--text);
+}
+
+.announcement-card {
+    background: var(--sidebar);
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* Progress Tracker Bars Area */
+.progress-blue {
+    background: var(--blue);
+}
+
+.progress-green {
+    background: var(--green);
 }
 
 /* ==========================================================================
    STAFF DASHBOARD
    ========================================================================== */
 .staff-dashboard-body {
-    background: #0d1b6e;
+    background: var(--dashboard-bg);
+    color: var(--text);
+    min-height: 100vh;
 }
 
-.staff-dashboard-container {
+.dashboard-wrapper {
     display: flex;
     min-height: 100vh;
 }
 
-.staff-sidebar {
-    width: 280px;
-    background: #0d1b6e;
-    color: white;
-    padding: 25px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.staff-nav {
+/* Sidebar Structural Modifiers for Staff Template Elements */
+.sidebar-header {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    color: var(--text);
 }
 
-.staff-nav a {
+.sidebar-header img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.sidebar-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--card);
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border);
+}
+
+.user-box img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-box h4 {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+}
+
+.user-box p {
+    font-size: 14px;
+    color: var(--header);
+    font-weight: 700;
+}
+
+.menu-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #777;
+    margin-bottom: 12px;
+    padding-left: 5px;
+}
+
+.logout-area {
+    margin-top: auto;
+}
+
+.logout-area a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--danger);
+    color: var(--white);
     text-decoration: none;
-    color: #cbd5e1;
     padding: 12px;
     border-radius: 10px;
-    transition: all 0.2s ease;
+    font-weight: 600;
+    transition: background 0.2s ease;
 }
 
-.staff-nav a:hover,
-.staff-nav .active {
-    background: #f07a6a;
-    color: white;
+.logout-area a:hover {
+    background: #dc2626;
 }
 
-.staff-main {
-    flex: 1;
-    padding: 30px;
+/* Topbar Components Mapping */
+.topbar h1 {
+    font-size: 26px;
+    font-weight: 700;
 }
 
-.staff-topbar {
+.notif-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    color: white;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.2s ease;
+}
+
+.notif-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.topbar-right .logout-btn {
+    background: var(--white);
+    color: var(--header);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    transition: background 0.2s ease;
+}
+
+.topbar-right .logout-btn:hover {
+    background: var(--sidebar);
+}
+
+/* Alert Component Block */
+.alert-card {
+    background: var(--card);
+    border-left: 5px solid var(--header);
+    padding: 20px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.alert-icon {
+    font-size: 24px;
+    color: var(--header);
+}
+
+.alert-card h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.alert-card p {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* Dashboard Two-Column Grid Setup */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
     margin-bottom: 25px;
 }
 
-.staff-badge {
-    background: #f07a6a;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-weight: 600;
+.calendar-card, 
+.appointment-card {
+    background: var(--sidebar);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 25px;
 }
 
-.staff-summary-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.staff-card {
-    background: #1e3a8a;
-    color: white;
-    border-radius: 18px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.staff-stat {
-    font-size: 42px;
+/* Table Calendar Elements rendering */
+.calendar-card h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text);
     font-weight: 700;
-    margin: 10px 0;
-    color: #ffb3a7;
 }
 
-.staff-grid-2 {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
+.calendar-card table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
 }
 
-.staff-row,
-.staff-list-item {
+.calendar-card th {
+    padding: 10px 0;
+    font-size: 11px;
+    color: var(--header);
+    font-weight: 700;
+}
+
+.calendar-card td {
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    color: var(--text);
+}
+
+.calendar-card td:hover {
+    background: var(--card);
+    cursor: pointer;
+}
+
+/* Appointment Elements layout mapping */
+.appointment-header {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.staff-pill {
-    background: #f07a6a;
-    padding: 5px 10px;
-    border-radius: 20px;
+.appointment-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.appointment-header a {
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+}
+
+.appointment-item > span:first-child {
     font-size: 12px;
-    color: white;
+    font-weight: 700;
+    color: var(--header);
+    min-width: 65px;
 }
 
-.staff-pill.alt {
-    background: #0d1b6e;
-    border: 1px solid #1a237e;
+.appointment-item div {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.appointment-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.appointment-item p {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Interactive Status Badges */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status.confirmed {
+    background: rgba(43, 182, 115, 0.15);
+    color: var(--green);
+}
+
+.status.pending {
+    background: rgba(53, 109, 243, 0.15);
+    color: var(--blue);
+}
+
+/* Base Layout for Announcements Controls */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.section-header div {
+    display: flex;
+    gap: 10px;
+}
+
+.view-btn, 
+.add-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.view-btn {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.view-btn:hover {
+    background: #cecece;
+}
+
+.add-btn {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.add-btn:hover {
+    background: var(--blue-dark);
+}
+
+.announcement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.announcement-card h4 {
+    font-size: 15px;
+    color: var(--header);
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.announcement-card p {
+    font-size: 13px;
+    line-height: 1.5;
 }
