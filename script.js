@@ -1,7 +1,49 @@
-// GLOBAL VARIABLE PARA SA AKTIBONG ROLE
+/* ==========================================================================
+   GLOBAL STATE & INITIALIZATION
+   ========================================================================== */
+// Global variable para sa aktibong role
 let selectedRole = 'patient';
 
-// 1. ROLE SWITCHING FUNCTION (Pinagsamang Luma at Bago)
+// Data storage para sa mga anunsyo
+const announcementsData = [
+    {
+        title: "Seasonal Flu Shots",
+        content: "Free Flu vaccinations available.",
+        date: "June 9, 2026"
+    },
+    {
+        title: "Free Blood Pressure Screening",
+        content: "Saturday screening program.",
+        date: "June 6, 2026"
+    }
+];
+
+// INITIALIZATION KAPAG HANDA NA ANG DOM TREE (UPDATED & SAFE VERSION)
+document.addEventListener("DOMContentLoaded", () => {
+    // Patakbuhin lang kung umiiral ang bulletins container sa HTML (Ito ang magliligtas sa Trend Page!)
+    const checkBulletinsContainer = document.getElementById("bulletinsContainer");
+    if (checkBulletinsContainer) {
+        renderAnnouncements();
+    }
+    
+    // Auto-attach event sa password fields kung nandoon sa login page
+    const showHideBtn = document.querySelector('.password-box span') || document.querySelector('.password-toggle');
+    if (showHideBtn) {
+        showHideBtn.addEventListener('click', togglePasswordVisibility);
+    }
+
+    // Interactivity para sa Trend Filter Dropdown
+    const filterDropdown = document.querySelector('.filter-dropdown');
+    if (filterDropdown) {
+        filterDropdown.addEventListener('change', (e) => {
+            console.log(`Filtering data for: ${e.target.value}`);
+        });
+    }
+});
+
+/* ==========================================================================
+   1. ROLE SWITCHING FUNCTION
+   ========================================================================== */
 function selectRole(role) {
     selectedRole = role;
     
@@ -49,7 +91,9 @@ function selectRole(role) {
     }
 }
 
-// 2. LOGIN VALIDATION AT ROUTING (Pinagsamang Form Submission at ID Checks)
+/* ==========================================================================
+   2. LOGIN VALIDATION AT ROUTING
+   ========================================================================== */
 function handleLogin(event) {
     // Pigilan ang default form submit reload kung galing sa standard event listener
     if (event) event.preventDefault();
@@ -109,7 +153,9 @@ function login() {
     return handleLogin();
 }
 
-// 3. SHOW / HIDE PASSWORD FUNCTION
+/* ==========================================================================
+   3. SHOW / HIDE PASSWORD FUNCTIONS
+   ========================================================================== */
 function togglePasswordVisibility() {
     const passwordInput = document.getElementById('loginPassword') || document.getElementById('password');
     const toggleIcon = document.getElementById('passwordToggleIcon');
@@ -140,7 +186,9 @@ function togglePassword() {
     togglePasswordVisibility();
 }
 
-// 4. REGISTRATION STEP NAVIGATION (May kasamang Step Tracker Update para sa register.html)
+/* ==========================================================================
+   4. REGISTRATION STEP NAVIGATION
+   ========================================================================== */
 function nextStep(step) {
     document.querySelectorAll('.form-step').forEach(el => el.classList.remove('active'));
     
@@ -170,7 +218,9 @@ function prevStep(step) {
     });
 }
 
-// 5. REGISTRATION SUBMIT
+/* ==========================================================================
+   5. REGISTRATION SUBMIT
+   ========================================================================== */
 function handleRegistration() {
     const passInput = document.getElementById('regPassword');
     const confirmInput = document.getElementById('confirmPassword');
@@ -201,28 +251,17 @@ function handleRegistration() {
     window.location.href = "login.html";
 }
 
-// 6. ANNOUNCEMENT DATA & DYNAMIC RENDER
-const announcementsData = [
-    {
-        title: "Seasonal Flu Shots",
-        content: "Free Flu vaccinations available.",
-        date: "June 9, 2026"
-    },
-    {
-        title: "Free Blood Pressure Screening",
-        content: "Saturday screening program.",
-        date: "June 6, 2026"
-    }
-];
-
+/* ==========================================================================
+   6. ANNOUNCEMENT & BULLETINS RENDERING
+   ========================================================================== */
 function renderAnnouncements() {
     const container = document.getElementById("bulletinsContainer");
-    if (!container) return;
+    if (!container) return; // Ligtas na hihinto kapag wala sa active dashboard page ang user
 
     container.innerHTML = '';
 
+    // Render gamit ang modern flat-card inline layout ng iyong main dashboard
     announcementsData.forEach(item => {
-        // Ginamit ang bagong modern flat-card inline layout para malinis tingnan ang integration
         container.innerHTML += `
             <div class="bulletin-item" style="background: #112229; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid #0f766e;">
                 <h4 style="color: #fff; margin-bottom: 5px;">${item.title}</h4>
@@ -232,14 +271,3 @@ function renderAnnouncements() {
         `;
     });
 }
-
-// INITIALIZATION KAPAG HANDA NA ANG DOM TREE
-document.addEventListener("DOMContentLoaded", () => {
-    renderAnnouncements();
-    
-    // Auto-attach event sa password trigger event click mechanics
-    const showHideBtn = document.querySelector('.password-box span') || document.querySelector('.password-toggle');
-    if (showHideBtn) {
-        showHideBtn.addEventListener('click', togglePasswordVisibility);
-    }
-});

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend Analysis - Mamatid Health Center</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="logo.png" alt="Mamatid Health Center Logo">
+            <span>Mamatid Health Center</span>
+        </div>
+
+        <div class="user-card">
+            <img src="avatar.jpg" alt="User Avatar">
+            <h3>Welcome,<br>User!</h3>
+        </div>
+
+        <nav class="sidebar-menu">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="trend-analysis.html" class="active">Trend Analysis</a>
+</nav>
+
+        <div class="logout-btn">
+            <a href="login.html">Logout</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Trend Analysis</h1>
+                <p>Real-time queue analytics and insights</p>
+            </div>
+
+            <div class="topbar-right">
+                <button class="notif-btn" aria-label="Notifications">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                </button>
+                <img src="avatar.jpg" alt="User Profile Picture">
+            </div>
+        </header>
+
+        <div class="page-action-header">
+            <h2>Advanced Trend Analysis</h2>
+            <div class="action-controls">
+                <select class="filter-dropdown">
+                    <option>Last 7 Days</option>
+                    <option>Last 30 Days</option>
+                </select>
+                <button class="export-btn">↓ Export</button>
+            </div>
+        </div>
+
+        <div class="metrics-row">
+            <div class="metric-card">
+                <span class="metric-label">CURRENT QUEUE</span>
+                <div class="metric-value">42 <span class="metric-unit">Patients</span></div>
+                <span class="metric-subtext trend-up">+8% from average</span>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">AVG SERVICE TIME</span>
+                <div class="metric-value">18 <span class="metric-unit">mins</span></div>
+                <span class="metric-subtext trend-down">-2 mins for goal</span>
+            </div>
+
+            <div class="metric-card">
+                <span class="metric-label">ESTIMATED WAIT</span>
+                <div class="metric-value">16 <span class="metric-unit">mins</span></div>
+                <span class="metric-subtext trend-neutral">8 prioritized</span>
+            </div>
+        </div>
+
+        <div class="analysis-row">
+
+            <div class="analysis-card peak-hours">
+                <h3>Peak Days Analysis</h3>
+                <div class="chart-list">
+                    <div class="chart-row">
+                        <span class="day-label">Monday</span>
+                        <div class="bar-container"><div class="bar progress-blue" style="width: 92%;"></div></div>
+                        <span class="status-label high">High (92%)</span>
+                    </div>
+                    <div class="chart-row">
+                        <span class="day-label">Tuesday</span>
+                        <div class="bar-container"><div class="bar progress-blue" style="width: 68%;"></div></div>
+                        <span class="status-label mod">Mod (68%)</span>
+                    </div>
+                    <div class="chart-row">
+                        <span class="day-label">Wednesday</span>
+                        <div class="bar-container"><div class="bar progress-blue" style="width: 78%;"></div></div>
+                        <span class="status-label mod">Mod (78%)</span>
+                    </div>
+                    <div class="chart-row">
+                        <span class="day-label">Thursday</span>
+                        <div class="bar-container"><div class="bar progress-green" style="width: 98%;"></div></div>
+                        <span class="status-label peak">Peak (98%)</span>
+                    </div>
+                    <div class="chart-row">
+                        <span class="day-label">Friday</span>
+                        <div class="bar-container"><div class="bar progress-blue" style="width: 45%;"></div></div>
+                        <span class="status-label low">Low (45%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-card patient-hour">
+                <h3>Patient per Hour</h3>
+                <div class="bar-chart-container">
+                    <div class="bar-item"><div class="chart-column col-blue" style="height: 60%;"></div><span>8am</span></div>
+                    <div class="bar-item"><div class="chart-column col-blue" style="height: 45%;"></div><span>9am</span></div>
+                    <div class="bar-item"><div class="chart-column col-green" style="height: 85%;"></div><span>10am</span></div>
+                    <div class="bar-item"><div class="chart-column col-blue" style="height: 75%;"></div><span>11am</span></div>
+                    <div class="bar-item"><div class="chart-column col-blue" style="height: 40%;"></div><span>12pm</span></div>
+                    <div class="bar-item"><div class="chart-column col-blue" style="height: 35%;"></div><span>1pm</span></div>
+                    <div class="bar-item"><div class="chart-column col-blue" style="height: 25%;"></div><span>2pm</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="table-section">
+            <div class="table-header">
+                <h2>Queue Performance Logs</h2>
+            </div>
+            
+            <div class="table-wrapper">
+                <table class="logs-table">
+                    <thead>
+                        <tr>
+                            <th>PATIENT</th>
+                            <th>DEPARTMENT</th>
+                            <th>CHECK-IN TIME</th>
+                            <th>SERVICE DURATION</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsTableBody">
+                        <tr>
+                            <td><strong>Arthur Shelby</strong></td>
+                            <td>Cardiology</td>
+                            <td>10:30 AM</td>
+                            <td class="duration-highlight">15 mins</td>
+                            <td class="action-cell"><button class="dots-btn">•••</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thomas Shelby</strong></td>
+                            <td>Pediatrics</td>
+                            <td>11:15 AM</td>
+                            <td class="duration-highlight">22 mins</td>
+                            <td class="action-cell"><button class="dots-btn">•••</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -631,18 +631,23 @@ body.auth-body {
 }
 
 /* ==========================================================================
-   PATIENT DASHBOARD (ANTI-OVERLAP FIX)
+   PATIENT & MAIN DASHBOARD (UPDATED ANTI-OVERLAP RULES)
    ========================================================================== */
 .dashboard-container {
     display: flex;
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     background: var(--dashboard-bg); 
 }
 
 .sidebar {
-    width: 270px;
-    background: var(--sidebar); 
-    color: var(--text); 
+    width: 260px; /* Sukat ng sidebar mo sa design */
+    min-width: 260px;
+    height: 100vh;
+    background-color: #ffffff; /* O kung ano man ang kulay ng sidebar mo */
+    position: relative;
+    z-index: 10; /* Mas mataas para laging nasa ibabaw ang mga links at clickable sila */
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -711,8 +716,13 @@ body.auth-body {
     font-weight: 600;
 }
 
+/* Ang main content ay kukuha lang ng natitirang espasyo */
 .main-content {
-    flex: 1;
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: auto; /* Para mag-scroll pababa kapag mahaba ang logs */
+    position: relative;
+    z-index: 1;
     padding: 30px;
 }
 
@@ -1260,4 +1270,236 @@ body.auth-body {
 .announcement-card p {
     font-size: 13px;
     line-height: 1.5;
+}
+
+/* ==========================================================================
+   TREND ANALYSIS SPECIFIC EXTENSIONS
+   ========================================================================== */
+.page-action-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-action-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.action-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-dropdown {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    font-size: 14px;
+    outline: none;
+}
+
+.export-btn {
+    padding: 8px 16px;
+    background: var(--button-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.export-btn:hover {
+    background: var(--button-hover);
+}
+
+/* KPI Metrics Rules */
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.metric-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.metric-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: 0.5px;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.metric-unit {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+}
+
+.metric-subtext {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.trend-up { color: var(--green); }
+.trend-down { color: var(--header); }
+.trend-neutral { color: var(--blue); }
+
+/* Charts Layout Grid */
+.analysis-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.analysis-card {
+    background: var(--sidebar);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.analysis-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Horizontal Bar Chart */
+.chart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+    align-items: center;
+    gap: 15px;
+}
+
+.day-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.bar-container {
+    background: var(--card);
+    border-radius: 6px;
+    height: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.bar {
+    height: 100%;
+    border-radius: 6px;
+}
+
+.status-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Vertical Column Chart Layout */
+.bar-chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 165px;
+    padding-top: 10px;
+}
+
+.bar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.chart-column {
+    width: 24px;
+    border-radius: 6px 6px 0 0;
+    transition: height 0.3s ease;
+}
+
+.col-blue { background: var(--blue); }
+.col-green { background: var(--green); }
+
+.bar-item span {
+    font-size: 12px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Performance Table Logs Structure */
+.table-section {
+    background: var(--sidebar);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.table-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.logs-table th {
+    padding: 12px;
+    font-size: 12px;
+    color: #666;
+    border-bottom: 2px solid var(--border);
+    text-transform: uppercase;
+}
+
+.logs-table td {
+    padding: 14px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.duration-highlight {
+    color: var(--blue-dark);
+    font-weight: 600;
+}
+
+.dots-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #777;
 }
