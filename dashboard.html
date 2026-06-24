@@ -1,61 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mamatid Health Center Dashboard</title>
-
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamatid Health Center Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <div class="dashboard-container">
 
     <aside class="sidebar">
-
         <div class="sidebar-logo">
-            <img src="logo.png" alt="">
+            <img src="logo.png" alt="Mamatid Logo">
             <span>Mamatid Health Center</span>
         </div>
 
         <div class="user-card">
-            <img src="avatar.jpg" alt="">
+            <img src="avatar.jpg" alt="User Profile">
             <h3>Welcome,<br>User!</h3>
         </div>
 
         <nav class="sidebar-menu">
-
-            <a href="#" class="active">
-                Dashboard
-            </a>
-
-            <a href="#">
-                Trend Analysis
-            </a>
-
-            <a href="#">
-                Health AI Chatbot
-            </a>
-
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="trend-analysis.html">Trend Analysis</a>
+            <a href="chatbot.html">Health AI Chatbot</a>
         </nav>
 
         <div class="logout-btn">
             <a href="login.html">Logout</a>
         </div>
-
     </aside>
 
     <main class="main-content">
 
         <header class="topbar">
-
             <div>
                 <h1>Welcome Back, John</h1>
                 <p>Everything looks great today</p>
             </div>
-
             <div class="topbar-right">
                 <button class="notif-btn" aria-label="Notifications">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -65,110 +49,76 @@
                 </button>
                 <img src="avatar.jpg" alt="User Profile Picture">
             </div>
-
         </header>
 
         <div class="health-alert">
-
-            <div class="alert-icon">
-                📢
-            </div>
-
+            <div class="alert-icon">📢</div>
             <div>
                 <h3>Health Alert: Seasonal Flu Shots</h3>
-                <p>
-                    Free Flu vaccinations are now available for all registered.
-                    No appointment needed for walk-ins between 2 PM–4PM Daily.
-                </p>
+                <p>Free Flu vaccinations are now available for all registered. No appointment needed for walk-ins between 2 PM–4 PM Daily.</p>
             </div>
-
         </div>
 
         <div class="dashboard-row">
 
             <div class="queue-card">
-
                 <div class="queue-top">
                     <span>YOUR QUEUE POSITION</span>
-                    <small>Last 30 Second ago</small>
+                    <small>Last updated 30 seconds ago</small>
                 </div>
-
-                <div class="queue-number">
-                    42<span>/56</span>
-                </div>
-
-                <p>
-                    You are currently 4th line.
-                    Please stay within the facility for your turn.
-                </p>
-
+                <div class="queue-number">42<span style="font-size: 28px; color: var(--text); opacity: 0.5;">/56</span></div>
+                <p>You are currently 4th in line. Please stay within the facility for your turn.</p>
+                
                 <div class="queue-stats">
-
                     <div class="small-card">
-                        <small>Est wait</small>
+                        <small>Est. Wait</small>
                         <h4>12 mins</h4>
                     </div>
-
                     <div class="small-card">
                         <small>Now Serving</small>
                         <h4>#38</h4>
                     </div>
-
                 </div>
-
+                
                 <div class="queue-buttons">
-
-                    <button class="ticket-btn">
-                        View Digital Ticket
-                    </button>
-
-                    <button class="consult-btn">
-                        View Consultation
-                    </button>
-
+                    <button class="ticket-btn">View Digital Ticket</button>
+                    <button class="consult-btn">View Consultation</button>
                 </div>
-
             </div>
 
-            <div class="right-panel">
+            <div class="dashboard-side-cards">
 
                 <div class="load-card">
-
-                    <h4>Center Load</h4>
-
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="card-icon">👥</div>
+                        <h4>Center Load</h4>
+                    </div>
+                    
                     <div class="load-item">
                         <span>Wait Area Capacity</span>
-                        <span>65%</span>
+                        <span class="load-percent">65%</span>
                     </div>
-
                     <div class="progress">
-                        <div class="progress-fill"></div>
+                        <div class="progress-fill capacity" style="width: 65%;"></div>
                     </div>
-
+                    
                     <div class="load-item">
                         <span>Physicians On-Duty</span>
-                        <span>8 / 10</span>
+                        <span class="doctor-count">8 / 10</span>
                     </div>
-
-                    <div class="progress green">
-                        <div class="progress-fill"></div>
+                    <div class="progress">
+                        <div class="progress-fill doctors" style="width: 80%;"></div>
                     </div>
-
                 </div>
 
                 <div class="chat-card">
-
-                    <h4>Need Assistance?</h4>
-
-                    <p>
-                        Chat with our digital assistant for quick
-                        answers or medical records help.
-                    </p>
-
-                    <button>
-                        Start Chat
-                    </button>
-
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="chat-icon">💬</div>
+                        <h4>Need Assistance?</h4>
+                    </div>
+                    <p>Chat with our digital assistant for quick answers or medical records help.</p>
+                    <button class="start-chat-btn">Start Chat</button>
+                    <small class="chat-status">● Typically replies in seconds</small>
                 </div>
 
             </div>
@@ -176,19 +126,12 @@
         </div>
 
         <section class="announcement-section">
-
             <div class="announcement-header">
-
-                <h2>Latest Announcement</h2>
-
-                <a href="#">View All</a>
-
+                <h2>Latest Announcements</h2>
+                <a href="#" style="color: var(--blue); font-weight: 600; text-decoration: none;">View All</a>
             </div>
-
             <div id="bulletinsContainer">
-
                 </div>
-
         </section>
 
     </main>
@@ -196,10 +139,10 @@
 </div>
 
 <script src="script.js"></script>
-
 <script>
-renderAnnouncements();
+    if (typeof renderAnnouncements === "function") {
+        renderAnnouncements();
+    }
 </script>
-
 </body>
 </html>

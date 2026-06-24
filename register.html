@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Health Account</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,31 +11,25 @@
 
     <!-- TOP BAR -->
     <header class="register-topbar">
-
         <div class="topbar-brand">
             <img src="images/logo.png" alt="Mamatid Logo">
             <span>Mamatid Health Center</span>
         </div>
-
     </header>
 
     <main class="register-page">
 
         <!-- TITLE -->
         <div class="register-header">
-
             <h1>Create Your Health Account</h1>
-
             <p>
                 Register to manage your health records, appointments,
                 and secure access to care services.
             </p>
-
         </div>
 
         <!-- STEP TRACKER -->
         <div class="step-tracker">
-
             <div class="step-node active" id="node-1">
                 <div class="step-circle">1</div>
                 <span>Personal Details</span>
@@ -55,7 +48,6 @@
                 <div class="step-circle">3</div>
                 <span>Security Setup</span>
             </div>
-
         </div>
 
         <div class="register-grid">
@@ -65,13 +57,11 @@
 
                 <!-- STEP 1 -->
                 <div class="form-step active" id="step-1">
-
                     <div class="step-header">
                         STEP 1 OF 3 : PERSONAL INFORMATION
                     </div>
 
                     <div class="form-row">
-
                         <div class="field flex-1">
                             <div class="field-label">First Name</div>
                             <div class="input-wrap">
@@ -85,11 +75,9 @@
                                 <input type="text" placeholder="e.g. Thompson" required>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="form-row">
-
                         <div class="field flex-1">
                             <div class="field-label">Date of Birth</div>
                             <div class="input-wrap">
@@ -107,58 +95,39 @@
                                 </select>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="field">
                         <div class="field-label">Address</div>
                         <div class="input-wrap">
-                            <input type="text"
-                                   placeholder="Mamatid Cabuyao, Laguna"
-                                   required>
+                            <input type="text" placeholder="Mamatid Cabuyao, Laguna" required>
                         </div>
                     </div>
 
                     <div class="form-row">
-
                         <div class="field flex-1">
                             <div class="field-label">Mobile Number</div>
                             <div class="input-wrap">
-                                <input type="tel"
-                                       placeholder="09XX XXX XXXX"
-                                       required>
+                                <input type="tel" placeholder="09XX XXX XXXX" required>
                             </div>
                         </div>
 
                         <div class="field flex-1">
                             <div class="field-label">Emergency Contact</div>
                             <div class="input-wrap">
-                                <input type="tel"
-                                       placeholder="09XX XXX XXXX"
-                                       required>
+                                <input type="tel" placeholder="09XX XXX XXXX" required>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="btn-group">
-                        <a href="login.html" class="btn-secondary">
-                            ← Cancel
-                        </a>
-
-                        <button
-                            type="button"
-                            class="btn-primary"
-                            onclick="nextStep(2)">
-                            Continue →
-                        </button>
+                        <a href="login.html" class="btn-secondary">&larr; Cancel</a>
+                        <button type="button" class="btn-primary" onclick="nextStep(2)">Continue &rarr;</button>
                     </div>
-
                 </div>
 
                 <!-- STEP 2 -->
                 <div class="form-step" id="step-2">
-
                     <div class="step-header">
                         STEP 2 OF 3 : ACCOUNT DETAILS
                     </div>
@@ -166,44 +135,25 @@
                     <div class="field">
                         <div class="field-label">Email Address</div>
                         <div class="input-wrap">
-                            <input type="email"
-                                   placeholder="example@email.com"
-                                   required>
+                            <input type="email" placeholder="example@email.com" required>
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="field-label">Username</div>
                         <div class="input-wrap">
-                            <input type="text"
-                                   placeholder="Enter Username"
-                                   required>
+                            <input type="text" placeholder="Enter Username" required>
                         </div>
                     </div>
 
                     <div class="btn-group">
-
-                        <button
-                            type="button"
-                            class="btn-secondary"
-                            onclick="prevStep(1)">
-                            ← Back
-                        </button>
-
-                        <button
-                            type="button"
-                            class="btn-primary"
-                            onclick="nextStep(3)">
-                            Continue →
-                        </button>
-
+                        <button type="button" class="btn-secondary" onclick="prevStep(1)">&larr; Back</button>
+                        <button type="button" class="btn-primary" onclick="nextStep(3)">Continue &rarr;</button>
                     </div>
-
                 </div>
 
                 <!-- STEP 3 -->
                 <div class="form-step" id="step-3">
-
                     <div class="step-header">
                         STEP 3 OF 3 : SECURITY SETUP
                     </div>
@@ -211,12 +161,7 @@
                     <div class="field">
                         <div class="field-label">Password</div>
                         <div class="input-wrap">
-                            <input
-                                type="password"
-                                id="regPassword"
-                                placeholder="Create Password"
-                                oninput="checkStrength(this.value)"
-                                required>
+                            <input type="password" id="regPassword" placeholder="Create Password" oninput="checkStrength(this.value)" required>
                         </div>
 
                         <div class="strength-meter">
@@ -225,91 +170,57 @@
                             <div class="strength-bar" id="sb3"></div>
                             <div class="strength-bar" id="sb4"></div>
                         </div>
-
-                        <div class="strength-label"
-                             id="strengthLabel"></div>
+                        <div class="strength-label" id="strengthLabel"></div>
                     </div>
 
                     <div class="field">
                         <div class="field-label">Confirm Password</div>
                         <div class="input-wrap">
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                placeholder="Confirm Password"
-                                required>
+                            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
                         </div>
                     </div>
 
                     <div class="agree-row">
-
                         <input type="checkbox" id="agreeTerms">
-
                         <label for="agreeTerms">
-                            I agree to the
-                            <a href="#">Terms of Service</a>
-                            and
-                            <a href="#">Privacy Policy</a>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                         </label>
-
                     </div>
 
                     <div class="btn-group">
-
-                        <button
-                            type="button"
-                            class="btn-secondary"
-                            onclick="prevStep(2)">
-                            ← Back
-                        </button>
-
-                        <button
-                            type="button"
-                            class="btn-primary"
-                            id="createBtn"
-                            onclick="handleRegistration()">
-                            Create Account
-                        </button>
-
+                        <button type="button" class="btn-secondary" onclick="prevStep(2)">&larr; Back</button>
+                        <button type="button" class="btn-primary" id="createBtn" onclick="handleRegistration()">Create Account</button>
                     </div>
-
                 </div>
 
             </section>
 
-            <!-- RIGHT SIDE -->
+            <!-- RIGHT SIDE BAR -->
             <aside class="register-sidebar">
-
-                <div class="info-card">
-
-                    <h3>Secure Registration</h3>
-
-                    <p>
-                        Your data is protected by end-to-end
-                        encryption and secure storage.
-                    </p>
-
+                <div class="info-card secure-card">
+                    <div class="card-icon">🛡️</div>
+                    <div>
+                        <h3>Secure Registration</h3>
+                        <p>Your data is protected by end-to-end encryption and secure storage.</p>
+                    </div>
                 </div>
 
-                <div class="info-card">
-
-                    <h3>Why Register</h3>
-
-                    <ul>
-                        <li>Book Appointments</li>
-                        <li>Access Health Records</li>
-                        <li>Manage Prescriptions</li>
-                    </ul>
-
+                <div class="info-card why-card">
+                    <div class="card-icon">📋</div>
+                    <div>
+                        <h3>Why Register</h3>
+                        <ul>
+                            <li>Book Appointments</li>
+                            <li>Access Health Records</li>
+                            <li>Manage Prescriptions</li>
+                        </ul>
+                    </div>
                 </div>
-
             </aside>
 
         </div>
-
     </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>

@@ -25,9 +25,10 @@
         </div>
 
         <nav class="sidebar-menu">
-    <a href="dashboard.html">Dashboard</a>
-    <a href="trend-analysis.html" class="active">Trend Analysis</a>
-</nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="trend-analysis.html" class="active">Trend Analysis</a>
+            <a href="chatbot.html">Health AI Chatbot</a>
+        </nav>
 
         <div class="logout-btn">
             <a href="login.html">Logout</a>
@@ -119,14 +120,8 @@
 
             <div class="analysis-card patient-hour">
                 <h3>Patient per Hour</h3>
-                <div class="bar-chart-container">
-                    <div class="bar-item"><div class="chart-column col-blue" style="height: 60%;"></div><span>8am</span></div>
-                    <div class="bar-item"><div class="chart-column col-blue" style="height: 45%;"></div><span>9am</span></div>
-                    <div class="bar-item"><div class="chart-column col-green" style="height: 85%;"></div><span>10am</span></div>
-                    <div class="bar-item"><div class="chart-column col-blue" style="height: 75%;"></div><span>11am</span></div>
-                    <div class="bar-item"><div class="chart-column col-blue" style="height: 40%;"></div><span>12pm</span></div>
-                    <div class="bar-item"><div class="chart-column col-blue" style="height: 35%;"></div><span>1pm</span></div>
-                    <div class="bar-item"><div class="chart-column col-blue" style="height: 25%;"></div><span>2pm</span></div>
+                <div style="position: relative; height: 220px; width: 100%;">
+                    <canvas id="patientChart"></canvas>
                 </div>
             </div>
 
@@ -172,5 +167,48 @@
 </div>
 
 <script src="script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('patientChart');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['8am','9am','10am','11am','12pm','1pm','2pm'],
+        datasets: [{
+            label: 'Patients',
+            data: [12, 19, 15, 25, 22, 18, 14],
+            borderColor: '#3b82f6', /* Tugma sa var(--blue) ng modern UI */
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 3,
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false /* Itinatago ang default legend para mas malinis */
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.05)'
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                }
+            }
+        }
+    }
+});
+</script>
 </body>
 </html>

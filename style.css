@@ -1,4 +1,59 @@
 /* ==========================================================================
+    NEW VISUAL CARDS (SECURITY & UTILITY)
+   ========================================================================== */
+.secure-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #f2fff4;
+    border-left: 5px solid #22c55e;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.secure-card h3 {
+    color: #15803d;
+}
+
+.why-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: #f5faff;
+    border-left: 5px solid #3b82f6;
+    border-radius: 18px;
+    padding: 25px;
+}
+
+.why-card h3 {
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.why-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.why-card li {
+    margin: 10px 0;
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 3px 8px rgba(0,0,0,.08);
+}
+
+/* ==========================================================================
    COLOR PALETTE SUMMARY & VARIABLES
    ========================================================================== */
 :root {
@@ -642,12 +697,12 @@ body.auth-body {
 }
 
 .sidebar {
-    width: 260px; /* Sukat ng sidebar mo sa design */
+    width: 260px; 
     min-width: 260px;
     height: 100vh;
-    background-color: #ffffff; /* O kung ano man ang kulay ng sidebar mo */
+    background-color: #ffffff; 
     position: relative;
-    z-index: 10; /* Mas mataas para laging nasa ibabaw ang mga links at clickable sila */
+    z-index: 10; 
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -720,7 +775,7 @@ body.auth-body {
 .main-content {
     flex-grow: 1;
     height: 100vh;
-    overflow-y: auto; /* Para mag-scroll pababa kapag mahaba ang logs */
+    overflow-y: auto; 
     position: relative;
     z-index: 1;
     padding: 30px;
@@ -763,13 +818,11 @@ body.auth-body {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
-    align-items: start; /* Pinipigilan nito ang sapilitang pag-stretch na nagdudulot ng overlap */
+    align-items: start; 
 }
 
-/* ANTI-OVERLAP REGULATION FOR ALL CARDS */
-.queue-card,
-.load-card,
-.chat-card {
+/* ANTI-OVERLAP REGULATION FOR GENERAL CARDS */
+.queue-card {
     position: relative;
     background: var(--card); 
     color: var(--text);
@@ -778,8 +831,8 @@ body.auth-body {
     border: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Maayos na distansya sa pagitan ng mga elemento sa loob */
-    height: auto; /* Hinahayaang lumaki nang natural base sa laman */
+    gap: 16px; 
+    height: auto; 
     overflow: hidden;
 }
 
@@ -806,7 +859,7 @@ body.auth-body {
 .queue-buttons {
     display: flex;
     gap: 10px;
-    margin-top: auto; /* Itinutulak ang buttons sa pinaka-ibaba nang natural */
+    margin-top: auto; 
 }
 
 .ticket-btn,
@@ -835,55 +888,146 @@ body.auth-body {
 }
 
 /* ==========================================================================
-   START CHAT BUTTON VARIATIONS (BLUE OR RED/ORANGE)
+   NEW VISUAL CARD STYLES (CENTER LOAD & CHAT CARDS)
    ========================================================================== */
-/* Default Shared Structure */
-.start-chat-btn {
-    display: inline-flex;
+
+/* --- Center Load Card Styling --- */
+.load-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    position: relative;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.load-card .card-icon {
+    font-size: 1.5rem;
+    background: #f0f4f8;
+    width: 45px;
+    height: 45px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: 100%; /* Sumasakop sa buong lapad ng card para sa malinis na UI */
-    padding: 12px 22px;
-    color: var(--white) !important;
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.load-card h4 {
+    font-size: 1.1rem;
+    color: #1a202c;
+    margin-bottom: 16px;
     font-weight: 600;
+}
+
+.load-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.load-percent, .doctor-count {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* Progress Bars */
+.progress {
+    background: #edf2f7;
+    border-radius: 8px;
+    height: 8px;
+    width: 100%;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.4s ease;
+}
+
+/* Kulay ng Capacity Bar (Orange/Warning alert kapag medyo puno) */
+.progress-fill.capacity {
+    background: linear-gradient(90deg, #f6ad55, #ed8936);
+}
+
+/* Kulay ng Doctors Bar (Green para sa active status) */
+.progress-fill.doctors {
+    background: linear-gradient(90deg, #68d391, #38a169);
+}
+
+/* --- Need Assistance Card Styling --- */
+.chat-card {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(49, 130, 206, 0.3);
+    text-align: left;
+    position: relative;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-icon {
+    font-size: 1.6rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.chat-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.chat-card p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 18px;
+}
+
+.start-chat-btn {
+    background: #ffffff;
+    color: #3182ce;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    margin-top: auto; /* Swak sa ibaba ng card */
+    width: 100%;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
 }
 
-/* Option 1: Modern Blue (Default Class) */
-.start-chat-btn,
-.start-chat-btn.btn-blue {
-    background: var(--blue);
-    box-shadow: 0 4px 12px rgba(53, 109, 243, 0.25);
-}
-
-.start-chat-btn:hover,
-.start-chat-btn.btn-blue:hover {
-    background: var(--blue-dark);
-    box-shadow: 0 6px 16px rgba(41, 71, 199, 0.35);
+.start-chat-btn:hover {
+    background: #f7fafc;
     transform: translateY(-1px);
 }
 
-/* Option 2: Brand Red/Orange (Dagdagan lang ng class na .btn-red sa HTML) */
-.start-chat-btn.btn-red {
-    background: var(--header);
-    box-shadow: 0 4px 12px rgba(235, 89, 62, 0.25);
-}
-
-.start-chat-btn.btn-red:hover {
-    background: var(--header-hover);
-    box-shadow: 0 6px 16px rgba(217, 76, 50, 0.35);
-    transform: translateY(-1px);
-}
-
-.start-chat-btn:active {
-    transform: translateY(1px);
+.chat-status {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.75rem;
+    opacity: 0.85;
+    color: #c6f6d5; 
 }
 
 /* ==========================================================================
@@ -1101,13 +1245,6 @@ body.auth-body {
 }
 
 /* Table Calendar Elements rendering */
-.calendar-card h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: var(--text);
-    font-weight: 700;
-}
-
 .calendar-card table {
     width: 100%;
     border-collapse: collapse;
@@ -1502,4 +1639,19 @@ body.auth-body {
     cursor: pointer;
     font-size: 16px;
     color: #777;
+}
+
+/* ==========================================================================
+   CHART.JS CANVAS PLUG-IN COMPONENT OVERRIDES
+   ========================================================================== */
+.chart-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    height: 320px;
+}
+
+#patientChart {
+    width: 100%;
+    height: 250px !important;
 }
