@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health AI Chatbot - Mamatid Health Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="../logo.png" alt="Mamatid Logo">
+            <span>Mamatid Health Center</span>
+        </div>
+
+        <div class="user-card">
+            <img src="../avatar.jpg" alt="User Profile">
+            <h3>Welcome,<br>User!</h3>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="trend-analysis.html">Trend Analysis</a>
+            <a href="chatbot.html" class="active">Health AI Chatbot</a>
+        </nav>
+
+        <div class="logout-btn">
+            <a href="../login.html">Logout</a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Health AI Chatbot</h1>
+                <p>Instant answers to your facility and wellness questions</p>
+            </div>
+            <div class="topbar-right">
+                <img src="../avatar.jpg" alt="User Profile Picture">
+            </div>
+        </header>
+
+        <div class="chat-container-box">
+            <div id="chatMessages" class="chat-messages">
+                <div class="msg bot">
+                    Hello! Welcome to Brgy. Mamatid Health Center's AI Assistant. How can I help you today?
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="userInput" placeholder="Type your health or center inquiry here...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+            
+            <p class="chat-disclaimer">
+                For medical emergencies, please call 911 or go directly to the nearest hospital.
+            </p>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="../js/chat.js"></script>
+</body>
+</html>
